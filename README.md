@@ -17,7 +17,7 @@ No build step and no dependencies. Open `index.html` in any browser to view it l
 
 | Case study | Repository |
 | --- | --- |
-| Adun Foods distributor network | [adun-foods-analysis](https://github.com/DataForBetter/adun-foods-analysis) |
+| Adun Foods distributor network | [adun-foods-analysis](https://github.com/DataForBetter/Adun-Foods-Analysis) |
 
 ## Still to add
 
