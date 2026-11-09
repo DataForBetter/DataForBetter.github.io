@@ -7,21 +7,21 @@
 <meta name="description" content="Business intelligence analyst. Excel, SQL and Power BI case studies built around business questions.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: a consulting-report reading column. Typography-led hero with an analytical figure, ruled sections, case studies as structured one-pagers with a sticky contents rail. */
 :root{
-  --bg:#F8F6F2;
-  --surface:#FFFFFF;
-  --ink:#1D1B1B;
-  --muted:#6B6562;
-  --rule:#E3DED8;
-  --accent:#7A1F2D;
-  --accent-soft:rgba(122,31,45,.08);
+  --bg:#FFFFFF;
+  --surface:#FAFAFA;
+  --ink:#16181D;
+  --muted:#6E7681;
+  --rule:#E9EAEC;
+  --accent:#1F4E79;
+  --accent-soft:rgba(31,78,121,.07);
   --accent-ink:#FFFFFF;
-  --fill-bg:#F3E7E8;
-  --font-display:"Newsreader", "Iowan Old Style", Georgia, serif;
-  --font-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --fill-bg:#F1F5F9;
+  --font-display:"Inter", system-ui, sans-serif;
+  --font-body:"Inter", system-ui, sans-serif;
   --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
   --step--1:.8125rem;
   --step-0:1rem;
@@ -34,14 +34,14 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#151314;--surface:#1D1A1B;--ink:#EDE8E4;--muted:#A49D99;--rule:#332E2F;
-    --accent:#D98894;--accent-soft:rgba(217,136,148,.10);--accent-ink:#1A1112;--fill-bg:#3A2428;
+    --bg:#0E0F11;--surface:#17181B;--ink:#ECEDEF;--muted:#9AA1AA;--rule:#25272B;
+    --accent:#7FB2E0;--accent-soft:rgba(127,178,224,.10);--accent-ink:#0E0F11;--fill-bg:#1A2430;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#151314;--surface:#1D1A1B;--ink:#EDE8E4;--muted:#A49D99;--rule:#332E2F;
-  --accent:#D98894;--accent-soft:rgba(217,136,148,.10);--accent-ink:#1A1112;--fill-bg:#3A2428;
+  --bg:#0E0F11;--surface:#17181B;--ink:#ECEDEF;--muted:#9AA1AA;--rule:#25272B;
+  --accent:#7FB2E0;--accent-soft:rgba(127,178,224,.10);--accent-ink:#0E0F11;--fill-bg:#1A2430;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -50,7 +50,7 @@ html{scroll-behavior:smooth;scroll-padding-top:5rem}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;letter-spacing:-.02em;line-height:1.18;text-wrap:balance;margin:0}
 p{margin:0}
 ul{margin:0;padding:0}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1rem, 4vw, 2.5rem)}
@@ -60,7 +60,7 @@ ul{margin:0;padding:0}
 /* Header */
 .site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--rule)}
 .site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:3.75rem}
-.brand{font-family:var(--font-display);font-size:var(--step-1);text-decoration:none;white-space:nowrap}
+.brand{font-size:var(--step-1);font-weight:600;letter-spacing:-.01em;text-decoration:none;white-space:nowrap}
 .brand span{color:var(--accent)}
 .nav{display:flex;gap:1.25rem;overflow-x:auto;scrollbar-width:none;min-width:0}
 .nav::-webkit-scrollbar{display:none}
@@ -68,18 +68,18 @@ ul{margin:0;padding:0}
 .nav a:hover{color:var(--ink)}
 
 /* Buttons and chips */
-.btn{display:inline-flex;align-items:center;gap:.5rem;font:500 .9375rem var(--font-body);padding:.7rem 1.15rem;border-radius:2px;text-decoration:none;border:1px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:500 .9375rem var(--font-body);padding:.7rem 1.15rem;border-radius:6px;text-decoration:none;border:1px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .btn:hover{opacity:.88}
 .chips{display:flex;flex-wrap:wrap;gap:.4rem}
-.chip{font-family:var(--font-mono);font-size:.75rem;padding:.2rem .55rem;border:1px solid var(--rule);border-radius:2px;color:var(--muted);white-space:nowrap}
-.status{font-family:var(--font-mono);font-size:.75rem;padding:.2rem .55rem;border-radius:2px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.chip{font-family:var(--font-mono);font-size:.72rem;padding:.22rem .55rem;border:1px solid var(--rule);border-radius:4px;color:var(--muted);white-space:nowrap}
+.status{font-family:var(--font-mono);font-size:.72rem;padding:.22rem .55rem;border-radius:4px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
 
 /* Hero */
 .hero{padding-block:clamp(3rem, 8vw, 6rem) clamp(3rem, 6vw, 4.5rem);border-bottom:1px solid var(--rule)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
 .hero h1{font-size:var(--step-4);letter-spacing:-.01em;margin-block:1rem 1.5rem}
-.hero h1 em{color:var(--accent);font-style:italic}
+.hero h1 em{color:var(--accent);font-style:normal}
 .hero .lede{font-size:var(--step-1);color:var(--muted);max-width:34rem}
 .hero .lede strong{color:var(--ink);font-weight:500}
 .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
@@ -87,10 +87,8 @@ ul{margin:0;padding:0}
 .figure-card svg{display:block;width:100%;height:auto}
 .figure-card figcaption{font-size:var(--step--1);color:var(--muted);margin-top:.75rem;line-height:1.5}
 .lc-axis{stroke:var(--muted);stroke-width:1}
-.lc-grid{stroke:var(--rule);stroke-width:1}
-.lc-eq{stroke:var(--muted);stroke-width:1.25;stroke-dasharray:4 4;fill:none}
-.lc-curve{stroke:var(--accent);stroke-width:2.5;fill:none}
-.lc-area{fill:var(--accent-soft)}
+.lc-grid{stroke:var(--rule);stroke-width:1;stroke-dasharray:3 3}
+.lc-curve{stroke:var(--accent);stroke-width:2;fill:none;stroke-linejoin:round}
 .lc-text{fill:var(--muted);font-family:var(--font-mono);font-size:10px}
 .lc-label{fill:var(--ink);font-family:var(--font-body);font-size:11px}
 .lc-dot{fill:var(--accent)}
@@ -121,7 +119,7 @@ section.block{padding-block:clamp(3.5rem,7vw,5.5rem);border-bottom:1px solid var
 /* About */
 .prose{max-width:var(--measure);display:grid;gap:1.1rem}
 .prose p{font-size:var(--step-1);line-height:1.65}
-.prose p:first-child{font-family:var(--font-display);font-size:var(--step-2);line-height:1.4}
+.prose p:first-child{font-size:var(--step-2);line-height:1.4;letter-spacing:-.01em}
 .method{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-top:3rem;border-top:1px solid var(--rule);padding-top:2rem}
 .method h3{font-size:var(--step-1);margin-block:.5rem}
 .method p{color:var(--muted);font-size:.9375rem}
@@ -139,7 +137,7 @@ section.block{padding-block:clamp(3.5rem,7vw,5.5rem);border-bottom:1px solid var
 .edu-card h3{font-size:var(--step-2)}
 .edu-card .sub{color:var(--muted)}
 .grade{text-align:right}
-.grade .num{font-family:var(--font-display);font-size:var(--step-3);color:var(--accent);font-variant-numeric:tabular-nums;line-height:1}
+.grade .num{font-size:var(--step-3);font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1}
 .grade .of{font-family:var(--font-mono);font-size:var(--step--1);color:var(--muted)}
 .edu-card .course{grid-column:1/-1;color:var(--muted);font-size:.9375rem;border-top:1px solid var(--rule);padding-top:1rem}
 
@@ -191,7 +189,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .cs-sec ul,.cs-sec ol{padding-left:1.2rem;display:grid;gap:.5rem}
 .cs-sec li::marker{color:var(--accent)}
 .qs{list-style:none;padding:0 !important;counter-reset:q}
-.qs li{counter-increment:q;padding-left:2.2rem;position:relative;font-family:var(--font-display);font-size:var(--step-1);line-height:1.4}
+.qs li{counter-increment:q;padding-left:2.2rem;position:relative;font-size:var(--step-1);line-height:1.45}
 .qs li::before{content:"Q" counter(q);position:absolute;left:0;top:.2rem;font-family:var(--font-mono);font-size:.75rem;color:var(--accent)}
 .todo{background:var(--fill-bg);border-left:2px solid var(--accent);padding:.75rem 1rem;color:var(--ink);font-size:.9375rem;list-style:none;margin-left:-1.2rem}
 .note{font-size:var(--step--1);color:var(--muted);border-top:1px solid var(--rule);padding-top:.75rem;margin-top:1rem}
@@ -204,7 +202,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 .cs-next a{border:1px solid var(--rule);background:var(--surface);padding:1.25rem;text-decoration:none;display:grid;gap:.35rem}
 .cs-next a:hover{border-color:var(--accent)}
 .cs-next a.right{text-align:right}
-.cs-next .t{font-family:var(--font-display);font-size:var(--step-1)}
+.cs-next .t{font-size:var(--step-1);font-weight:500}
 
 .gallery{margin-block:2.5rem 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,36rem),1fr));gap:1.5rem}
 .gallery figure{margin:0;background:var(--surface);border:1px solid var(--rule);padding:.75rem}
@@ -265,31 +263,25 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
       <!-- Photo slot: replace this figure with a headshot later without changing the layout -->
       <figure class="figure-card" style="margin:0">
         <svg viewBox="0 0 320 330" role="img" aria-labelledby="lc-title">
-          <title id="lc-title">Illustrative Lorenz curve showing sales concentrated in a small share of distributors</title>
-          <line class="lc-grid" x1="40" y1="170" x2="300" y2="170"/>
-          <line class="lc-grid" x1="170" y1="40" x2="170" y2="300"/>
-          <line class="lc-grid" x1="40" y1="40" x2="300" y2="40"/>
-          <line class="lc-grid" x1="300" y1="40" x2="300" y2="300"/>
-          <polygon class="lc-area" points="40,300 66,299.4 92,296 118,288.6 144,276 170,257.1 196,231.1 222,197 248,154.4 274,102.4 300,40"/>
-          <line class="lc-eq" x1="40" y1="300" x2="300" y2="40"/>
-          <polyline class="lc-curve" points="40,300 66,299.4 92,296 118,288.6 144,276 170,257.1 196,231.1 222,197 248,154.4 274,102.4 300,40"/>
+          <title id="lc-title">Cumulative share of sales across 36 distributors, reaching 80 per cent at the seventeenth</title>
+          <line class="lc-grid" x1="40" y1="92" x2="300" y2="92"/>
+          <line class="lc-grid" x1="162.8" y1="92" x2="162.8" y2="300"/>
+          <polyline class="lc-curve" points="40.0,300.0 47.2,274.6 54.4,250.7 61.7,226.9 68.9,208.9 76.1,194.3 83.3,180.9 90.6,169.0 97.8,157.5 105.0,147.3 112.2,138.1 119.4,129.0 126.7,120.2 133.9,113.2 141.1,106.7 148.3,100.3 155.6,94.6 162.8,89.4 170.0,84.6 177.2,80.0 184.4,75.4 191.7,71.2 198.9,67.9 206.1,64.5 213.3,61.7 220.6,59.0 227.8,56.3 235.0,54.0 242.2,51.8 249.4,49.7 256.7,47.6 263.9,45.9 271.1,44.5 278.3,43.3 285.6,42.2 292.8,41.0 300.0,40.0"/>
           <line class="lc-axis" x1="40" y1="300" x2="300" y2="300"/>
           <line class="lc-axis" x1="40" y1="40" x2="40" y2="300"/>
-          <line class="lc-axis" x1="248" y1="158" x2="248" y2="262" style="stroke:var(--accent);stroke-dasharray:2 3"/>
-          <circle class="lc-dot" cx="248" cy="154.4" r="3.5"/>
-          <text class="lc-label" x="294" y="276" text-anchor="end">Top 20% of distributors</text>
-          <text class="lc-label" x="294" y="290" text-anchor="end" style="fill:var(--muted)">hold a large share of sales</text>
-          <text class="lc-label" x="120" y="196" transform="rotate(-45 120 196)" style="fill:var(--muted)">Line of equality</text>
+          <circle class="lc-dot" cx="162.8" cy="92" r="3.5"/>
+          <text class="lc-label" x="172" y="112">17 of 36 distributors</text>
+          <text class="lc-label" x="172" y="126" style="fill:var(--muted)">reach 80% of sales</text>
           <text class="lc-text" x="40" y="316" text-anchor="middle">0</text>
           <text class="lc-text" x="170" y="316" text-anchor="middle">50%</text>
           <text class="lc-text" x="300" y="316" text-anchor="middle">100%</text>
           <text class="lc-text" x="34" y="303" text-anchor="end">0</text>
-          <text class="lc-text" x="34" y="173" text-anchor="end">50%</text>
+          <text class="lc-text" x="34" y="95" text-anchor="end">80%</text>
           <text class="lc-text" x="34" y="43" text-anchor="end">100%</text>
-          <text class="lc-text" x="170" y="329" text-anchor="middle">Cumulative share of distributors</text>
+          <text class="lc-text" x="170" y="329" text-anchor="middle">Distributors, largest first</text>
           <text class="lc-text" x="12" y="170" text-anchor="middle" transform="rotate(-90 12 170)">Cumulative share of sales</text>
         </svg>
-        <figcaption>Every case study starts with a business question. This one asked how evenly sales were spread across a distributor network. Illustrative curve.</figcaption>
+        <figcaption>Every case study starts with a business question. This one asked how dependent a distributor network was on its largest partners. The national answer turned out to be reassuring, and the wrong place to look.</figcaption>
       </figure>
     </div>
   </section>
@@ -515,15 +507,17 @@ const PROJECTS = [
       ["images/03_revenue_movement.png", "Revenue Movement: how the network moved from 2024 to 2025, by distributor and by state"]
     ],
     sections: [
-      ["Business context", `<p>Adun Foods Nigeria Limited is a fictional consumer goods manufacturer that sells packaged foods through independent distributors across Nigeria. Distributors are its route to market, so their coverage and performance shape revenue in every region.</p>`],
-      ["Problem statement", `<p>The business had no consolidated view of which distributors drove its sales, how dependent it was on a small number of large partners, or which locations were underserved. Decisions about distributor support and expansion were based on relationships rather than evidence.</p>`],
-      ["Objectives and key questions", `<ol class="qs"><li>How did sales move across 2024 and 2025, and when does demand peak?</li><li>Where is the network present, and how dependent is each state on a single distributor?</li><li>Where did revenue move between 2024 and 2025?</li></ol><p class="note">One dashboard answers each question. No dashboard repeats another's measure and dimension pair.</p>`],
-      ["Data and tools", `<ul><li><strong>Distributor records</strong> covering location, region and status.</li><li><strong>Sales transactions</strong> by distributor, product and month.</li><li><strong>Location reference data</strong> used to map coverage.</li></ul><p style="margin-top:1rem">Excel for first review, Power Query to consolidate and clean, and Power BI to model the data, write DAX measures and build the dashboard. The data, scripts and documentation are kept in the <a href="https://github.com/DataForBetter/Adun-Foods-Analysis">project repository</a>.</p>`],
-      ["Analytical approach", `<ol><li>Consolidated distributor, sales and location records into a star schema, and ran integrity checks on keys, duplicates and arithmetic. One defect surfaced: 228 sales dated before their distributor's onboarding date, which was corrected at source.</li><li>Measured national concentration with a Pareto view, the Herfindahl index and a Gini coefficient.</li><li>Measured dependency inside each state over active distributors only, since a distributor that has stopped trading cannot be depended on.</li><li>Measured revenue movement in naira rather than percentage growth, because percentage growth ranks a distributor that added half a million above one that added nine million.</li><li>Rejected two charts that would have misled. Both grouped distributors by a tier assigned from the same sales being explained, so they restated their own definition.</li></ol>`],
-      ["Key findings", `<ul><li>Sales grew <strong>13.35%</strong>, from ₦424.8M to ₦481.5M, with every quarter of 2025 ahead of the year before.</li><li>Nationally the network is not over-dependent on anyone. The largest distributor holds <strong>9.91%</strong> of sales, <strong>17 of 36</strong> reach 80%, and the Herfindahl index is <strong>513</strong>, well below the 1,500 that marks a concentrated market.</li><li>The exposure sits one level down. A single distributor holds <strong>77%</strong> of Lagos, <strong>70%</strong> of Kano and <strong>67%</strong> of Bauchi.</li><li><strong>2 of 14</strong> states, Borno and Ebonyi, have no active distributor.</li><li><strong>30 of 36</strong> distributors grew. Of the ₦5.17M lost, ₦3.79M came from the one distributor that stopped trading, and the state it served is the only state to decline.</li></ul><p class="note">Figures come from the synthetic dataset. Every one is reproduced by a script in the project repository.</p>`],
-      ["Business implications", `<p>The national concentration figure is reassuring and the state figure is not, and only the second is actionable. Losing the top distributor in Lagos costs 77% of that market rather than 9.91% of national revenue. Rivers shows what that looks like in practice. It lost one distributor of three and became the only state in the network to go backwards, down 10.2%, even though its two remaining distributors grew.</p>`],
-      ["Recommendations", `<ul><li>Appoint second distributors in Lagos, Kano and Bauchi, where one partner holds two thirds or more of the state.</li><li>Replace the lost distributor in Rivers, which is down to two and is the only state losing revenue.</li><li>Treat Borno and Ebonyi as candidates for entry, subject to demand data this dataset does not hold.</li><li>Track state-level dependency, not national concentration, as the recurring network KPI.</li></ul>`],
-      ["Limitations and next steps", `<p>The dataset is synthetic, so the patterns show the method rather than a real market. It holds revenue only, with no margin, cost to serve or market size, so the recommendations above cannot yet be ranked by value. Two years of monthly data is also too short to separate trend from seasonality. Next steps are profitability and route data, and demand estimates by state.</p>`]
+      ["The question", `<p>Adun Foods sells packaged foods through 36 independent distributors across Nigeria. The distributors are the whole route to market, so a weak partner is soft revenue in that state and a lost one is a hole in the map. Nobody could say how exposed the network actually was.</p><p>I set out to answer three things. How sales were moving. Where the network was thin. And where the revenue had actually gone between 2024 and 2025.</p>`],
+
+      ["The obvious answer was wrong", `<p>Concentration looked like the easy one. Rank the distributors, band them into tiers, chart the tiers. Tier 1 came out at 50.4% of sales, which reads like a finding.</p><p>It is not a finding. The tiers were assigned from cumulative sales share, so a chart of sales by tier is restating its own definition. The same flaw shows up again in growth: Tier 1 grows at 25.0% against Tier 3 at 13.8%, which looks like big distributors pulling ahead. Band the same distributors by their <strong>2024</strong> sales instead, an independent starting point, and the pattern evaporates to 14.4%, 9.4% and 14.7%. The correlation between size and subsequent growth is 0.03.</p><p>The tier column still sits in the data, and appears on none of the three dashboards. Measured honestly, the answer reverses.</p>`],
+
+      ["Nationally fine, locally exposed", `<p>At national level this network is not over-dependent on anyone. The largest distributor holds <strong>9.91%</strong> of sales. Seventeen of thirty-six reach 80%. The Herfindahl index is <strong>513</strong>, against 278 if all thirty-six were identical, and well under the 1,500 that usually marks a concentrated market.</p><p>The exposure sits one level down. Inside each state a single distributor usually dominates:</p><ul><li>Lagos: one distributor holds <strong>77%</strong></li><li>Kano <strong>70%</strong>, Bauchi <strong>67%</strong>, Delta and Kaduna <strong>64%</strong></li><li>The least exposed state, FCT Abuja, is still at <strong>45%</strong></li></ul><p>Losing the top distributor in Lagos costs 77% of that market, not 9.91% of national revenue. Both numbers are true. Only the second one is worth acting on.</p>`],
+
+      ["Rivers, where it already happened", `<p>One distributor stopped trading in June 2025. It was in Rivers.</p><p>Rivers now runs on two distributors where every other covered state has three, and it is the only state in the network losing revenue, down <strong>10.2%</strong>. Its two remaining distributors actually grew, adding ₦1.6M between them. The departure wiped that out and more. Of the ₦5.17M lost across the entire network, <strong>₦3.79M</strong> came from that single exit.</p><p>So the thin coverage on one dashboard and the only red bar on another are the same event, seen twice. That is what dependency looks like when it stops being theoretical.</p>`],
+
+      ["What I would do", `<ul><li>Appoint second distributors in Lagos, Kano and Bauchi, where one partner holds two thirds or more of the state.</li><li>Replace the lost distributor in Rivers before the gap compounds.</li><li>Treat Borno and Ebonyi, the two states with no active distributor, as candidates for entry, subject to demand data this dataset does not hold.</li><li>Track state-level dependency as the recurring network KPI. National concentration is the number that will keep telling you everything is fine.</li></ul>`],
+
+      ["How it was built, and what it cannot tell you", `<p>Five tables in a star schema, modelled in Power BI with DAX measures, and three report pages, one per question. The data is synthetic, generated from a fixed seed, and a Python script reproduces every figure shown on the dashboards so any number here can be checked against the source.</p><p>Integrity checks ran before the analysis and caught one defect: 228 sales dated before their distributor had been onboarded, corrected at source.</p><p>The limits are real. Synthetic data means the patterns come from the generator, so nothing here describes Nigerian trade. It holds revenue only, with no margin or cost to serve, which means the recommendations above cannot yet be ranked by value. And two years of monthly data is too short to separate trend from seasonality with any confidence.</p>`]
     ]
   },
   {
