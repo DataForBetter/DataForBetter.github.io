@@ -26,4 +26,4 @@ No build step and no dependencies. Open `index.html` in any browser to view it l
 
 ## A note on data
 
-Project data is either synthetic or anonymised. No client names or confidential figures appear anywhere on the site.
+Client work shown on the site is anonymised, with no client names or confidential figures. Each case study states the source and nature of its data.
