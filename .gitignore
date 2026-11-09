@@ -1,14 +1,3 @@
-# Power BI Desktop local cache and recovery files
-.pbi/
-# *.pbix is committed on purpose, so the report can be opened and checked
-*.abf
-*.bak
-
-# Python
-__pycache__/
-*.pyc
-.venv/
-
 # OS files
 .DS_Store
 Thumbs.db

@@ -1,37 +1,29 @@
 # Adeyemi Zainab: Portfolio
 
-A portfolio website for a business intelligence analyst, with case studies built in Excel, SQL and Power BI.
+The source of my portfolio site, published at **https://dataforbetter.github.io/**.
 
-## What is in this repository
+A business intelligence analyst's case studies, built in Excel, SQL and Power BI, each written around the business question it answers rather than around the dashboard.
+
+## Contents
 
 | Path | Purpose |
 | --- | --- |
-| `index.html` | The full website in one file: home page, case studies, experience, skills and contact |
-| `adun-foods-powerbi/` | The Adun Foods distributor network case study: data, scripts, documentation and dashboards |
-| `.gitignore` | Keeps Power BI cache files and system files out of version control |
+| `index.html` | The whole site in one file: home page, case studies, experience, skills and contact |
+| `images/` | Dashboard captures used in the case studies |
 
-## Viewing the website
+No build step and no dependencies. Open `index.html` in any browser to view it locally.
 
-Open `index.html` in any browser. The site needs no build step and no installation.
+## Case study repositories
 
-Once the repository is on GitHub it can be published free with GitHub Pages. In the repository settings choose **Pages**, select the `main` branch and the root folder, then save.
-
-## The Adun Foods case study
-
-Three Power BI dashboards on a synthetic Nigerian distributor network, with the data generator, the analysis script and the documentation that backs every figure. See [adun-foods-powerbi/README.md](adun-foods-powerbi/README.md).
-
-```bash
-cd adun-foods-powerbi
-pip install -r requirements.txt
-python scripts/generate_data.py
-python scripts/analyse.py
-```
+| Case study | Repository |
+| --- | --- |
+| Adun Foods distributor network | [adun-foods-analysis](https://github.com/DataForBetter/adun-foods-analysis) |
 
 ## Still to add
 
-- **Contact details**: email, LinkedIn, GitHub and CV link, marked "to be added" in `index.html`.
-- **Coffee and beverage findings**: those two case studies have placeholders where findings belong.
+- Contact details: email, LinkedIn and CV link, currently marked "to be added".
+- Findings for the coffee retail and beverage manufacturing case studies.
 
-## Data
+## A note on data
 
-All data in the Adun Foods project is synthetic and produced by `adun-foods-powerbi/scripts/generate_data.py` from a fixed seed. The client work described in the coffee and beverage case studies is anonymised, with no client names or confidential figures.
+Project data is either synthetic or anonymised. No client names or confidential figures appear anywhere on the site.
