@@ -1,0 +1,12 @@
+{
+  "total_sales_ngn": 906326200,
+  "distributor_count": 36,
+  "active_distributor_count": 35,
+  "top20_share_pct": 50.4,
+  "top20_distributor_count": 7,
+  "gini": 0.47,
+  "uncovered_locations": 2,
+  "covered_states": 12,
+  "top_region": "South West",
+  "top_region_share_pct": 31.5
+}

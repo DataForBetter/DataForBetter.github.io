@@ -1,0 +1,36 @@
+{
+  "name": "Adun Foods Navy",
+  "dataColors": ["#1F4E79", "#4A86C5", "#8FB8DE", "#C5DCF0", "#5B8C7B", "#D98E8A", "#E8B4B0", "#8A96A3"],
+  "background": "#FFFFFF",
+  "foreground": "#2C3E50",
+  "tableAccent": "#1F4E79",
+  "good": "#7FA98B",
+  "neutral": "#1F4E79",
+  "bad": "#D98E8A",
+  "maximum": "#1F4E79",
+  "minimum": "#DCE8F3",
+  "textClasses": {
+    "title": { "fontFace": "Segoe UI Semibold", "fontSize": 13, "color": "#2C3E50" },
+    "label": { "fontFace": "Segoe UI", "fontSize": 10, "color": "#6B7A88" },
+    "callout": { "fontFace": "Segoe UI Light", "fontSize": 28, "color": "#1F4E79" },
+    "header": { "fontFace": "Segoe UI Semibold", "fontSize": 11, "color": "#2C3E50" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } }, "transparency": 0 }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#E6E9ED" } }, "radius": 10 }],
+        "dropShadow": [{ "show": true, "color": { "solid": { "color": "#000000" } }, "position": "Outer", "preset": "BottomRight", "shadowSpread": 2, "shadowBlur": 7, "transparency": 88 }],
+        "visualHeader": [{ "show": false }],
+        "title": [{ "show": true, "fontColor": { "solid": { "color": "#2C3E50" } }, "fontSize": 13, "fontFamily": "Segoe UI Semibold", "alignment": "left" }],
+        "subTitle": [{ "show": false }]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{ "color": { "solid": { "color": "#F4F6F8" } }, "transparency": 0 }],
+        "outspace": [{ "color": { "solid": { "color": "#F4F6F8" } } }]
+      }
+    }
+  }
+}

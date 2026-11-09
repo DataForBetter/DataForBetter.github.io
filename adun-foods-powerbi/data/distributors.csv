@@ -1,0 +1,37 @@
+DistributorID,DistributorName,LocationID,OnboardedDate,Status,Tier
+D001,Adewale & Sons Trading,L01,2021-12-04,Active,Tier 1
+D002,Bright Horizon Ventures,L02,2024-01-01,Active,Tier 1
+D003,Chidinma Foods Nigeria,L03,2021-10-01,Active,Tier 1
+D004,Danjuma Commodities,L04,2021-04-21,Active,Tier 3
+D005,Eagle Crest Distribution,L05,2022-03-20,Active,Tier 3
+D006,Folasade Enterprises,L06,2021-12-10,Active,Tier 3
+D007,Garba Yusuf Trading,L07,2023-06-15,Active,Tier 2
+D008,Harmony Foods Nigeria,L08,2021-09-16,Active,Tier 2
+D009,Ibrahim Sani Ventures,L09,2021-10-14,Active,Tier 1
+D010,Jubilee Wholesale Nigeria,L10,2024-01-01,Active,Tier 2
+D011,Kelechi Brothers Trading,L11,2024-01-01,Active,Tier 2
+D012,Lanre Adebayo Ventures,L13,2023-02-15,Active,Tier 3
+D013,Mainland Provisions,L01,2024-01-01,Active,Tier 3
+D014,Nwachukwu Trading Company,L02,2022-06-05,Active,Tier 1
+D015,Oluwaseun Global Concept,L03,2021-04-10,Active,Tier 3
+D016,Pacesetter Distribution,L04,2024-01-01,Active,Tier 2
+D017,Queensway Foods,L05,2021-05-04,Active,Tier 3
+D018,Rahman Bello Enterprises,L06,2022-05-04,Active,Tier 3
+D019,Sabon Gari Provisions,L07,2022-10-04,Active,Tier 3
+D020,Tunde Ogunleye Ventures,L08,2023-08-13,Active,Tier 3
+D021,Unity Mart Distribution,L09,2021-06-23,Active,Tier 2
+D022,Victory Gate Trading,L10,2021-11-16,Active,Tier 3
+D023,Wazobia Foods Nigeria,L11,2021-04-30,Active,Tier 3
+D024,Yakubu Musa Commodities,L13,2021-02-03,Active,Tier 2
+D025,Zenith Pantry Supplies,L01,2021-09-12,Active,Tier 3
+D026,Abiola Grace Ventures,L02,2023-09-02,Active,Tier 3
+D027,Bendel Foods Company,L03,2023-01-29,Active,Tier 3
+D028,Chukwuemeka Trading,L04,2022-04-17,Active,Tier 2
+D029,Dangogo Provisions,L05,2023-08-20,Active,Tier 3
+D030,Emeka Obi Enterprises,L06,2022-04-24,Inactive,Tier 3
+D031,Fountain Head Foods,L07,2024-01-01,Active,Tier 3
+D032,Golden Gate Provisions,L08,2022-01-22,Active,Tier 2
+D033,Hauwa Bala Trading,L09,2023-08-09,Active,Tier 2
+D034,Ifeanyi Okeke Ventures,L10,2021-12-18,Active,Tier 1
+D035,Jide Martins Company,L11,2023-03-11,Active,Tier 3
+D036,Kawu Aliyu Distribution,L13,2023-03-10,Active,Tier 1

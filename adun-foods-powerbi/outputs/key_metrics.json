@@ -1,0 +1,219 @@
+{
+  "data_quality": {
+    "row_counts": {
+      "sales": 5702,
+      "distributors": 36,
+      "locations": 14,
+      "products": 8,
+      "dates": 731
+    },
+    "null_cells": 0,
+    "duplicate_order_ids": 0,
+    "duplicate_distributor_names": 0,
+    "orphan_distributor_keys": 0,
+    "orphan_product_keys": 0,
+    "orphan_location_keys": 0,
+    "sales_amount_mismatches": 0,
+    "sales_before_onboarding": 0,
+    "months_per_year": {
+      "2024": 12,
+      "2025": 12
+    }
+  },
+  "page1_sales_overview": {
+    "total_sales": 906326200,
+    "total_units": 857198,
+    "total_orders": 5702,
+    "sales_2024": 424799800,
+    "sales_2025": 481526400,
+    "sales_growth_pct": 0.1335,
+    "peak_month": {
+      "month": "2025-03",
+      "sales": 44336490
+    },
+    "trough_month": {
+      "month": "2024-01",
+      "sales": 31167870
+    },
+    "quarterly_sales": {
+      "2024 Q1": 107136240,
+      "2024 Q2": 109791620,
+      "2024 Q3": 97735220,
+      "2024 Q4": 110136720,
+      "2025 Q1": 123484660,
+      "2025 Q2": 125351710,
+      "2025 Q3": 113094750,
+      "2025 Q4": 119595280
+    }
+  },
+  "page2_coverage_and_concentration": {
+    "covered_states": 12,
+    "total_states": 14,
+    "uncovered_states": [
+      "Borno",
+      "Ebonyi"
+    ],
+    "top_distributor_share_active": 0.0991,
+    "distributors_to_50pct": 7,
+    "distributors_to_80pct": 17,
+    "top_5_share": 0.4066,
+    "hhi": 513.5,
+    "hhi_if_equal": 277.8,
+    "gini": 0.472,
+    "state_dependency": [
+      {
+        "state": "Lagos",
+        "active_distributors": 3,
+        "active_sales": 53684730,
+        "top_active_distributor_share": 0.7716
+      },
+      {
+        "state": "Kano",
+        "active_distributors": 3,
+        "active_sales": 119394990,
+        "top_active_distributor_share": 0.7001
+      },
+      {
+        "state": "Bauchi",
+        "active_distributors": 3,
+        "active_sales": 76483490,
+        "top_active_distributor_share": 0.6652
+      },
+      {
+        "state": "Delta",
+        "active_distributors": 3,
+        "active_sales": 55920580,
+        "top_active_distributor_share": 0.6363
+      },
+      {
+        "state": "Kaduna",
+        "active_distributors": 3,
+        "active_sales": 48118490,
+        "top_active_distributor_share": 0.6362
+      },
+      {
+        "state": "Rivers",
+        "active_distributors": 2,
+        "active_sales": 25354570,
+        "top_active_distributor_share": 0.6278
+      },
+      {
+        "state": "Ogun",
+        "active_distributors": 3,
+        "active_sales": 74713490,
+        "top_active_distributor_share": 0.6227
+      },
+      {
+        "state": "Kwara",
+        "active_distributors": 3,
+        "active_sales": 148336070,
+        "top_active_distributor_share": 0.5959
+      },
+      {
+        "state": "Enugu",
+        "active_distributors": 3,
+        "active_sales": 17931840,
+        "top_active_distributor_share": 0.5562
+      },
+      {
+        "state": "Anambra",
+        "active_distributors": 3,
+        "active_sales": 59991580,
+        "top_active_distributor_share": 0.5288
+      },
+      {
+        "state": "Oyo",
+        "active_distributors": 3,
+        "active_sales": 157500320,
+        "top_active_distributor_share": 0.5269
+      },
+      {
+        "state": "FCT Abuja",
+        "active_distributors": 3,
+        "active_sales": 54387040,
+        "top_active_distributor_share": 0.45
+      }
+    ]
+  },
+  "page3_revenue_movement": {
+    "revenue_gained": 61896050,
+    "revenue_lost": -5169450,
+    "net_change": 56726600,
+    "median_distributor_growth_pct": 0.1266,
+    "distributors_growing": 30,
+    "distributors_declining": 6,
+    "top_gainers": [
+      {
+        "distributor": "Ifeanyi Okeke Ventures",
+        "change": 9299020,
+        "growth_pct": 0.2503
+      },
+      {
+        "distributor": "Kawu Aliyu Distribution",
+        "change": 6012270,
+        "growth_pct": 0.268
+      },
+      {
+        "distributor": "Chidinma Foods Nigeria",
+        "change": 5282550,
+        "growth_pct": 0.2562
+      },
+      {
+        "distributor": "Adewale & Sons Trading",
+        "change": 5147820,
+        "growth_pct": 0.2838
+      },
+      {
+        "distributor": "Ibrahim Sani Ventures",
+        "change": 3946000,
+        "growth_pct": 0.0935
+      }
+    ],
+    "top_losers": [
+      {
+        "distributor": "Emeka Obi Enterprises",
+        "change": -3786730,
+        "growth_pct": -0.4139
+      },
+      {
+        "distributor": "Harmony Foods Nigeria",
+        "change": -1037300,
+        "growth_pct": -0.0813
+      },
+      {
+        "distributor": "Hauwa Bala Trading",
+        "change": -300020,
+        "growth_pct": -0.0297
+      },
+      {
+        "distributor": "Rahman Bello Enterprises",
+        "change": -32280,
+        "growth_pct": -0.0068
+      },
+      {
+        "distributor": "Dangogo Provisions",
+        "change": -7600,
+        "growth_pct": -0.0015
+      }
+    ],
+    "growth_by_state": {
+      "Bauchi": 0.2743,
+      "Lagos": 0.2402,
+      "Ogun": 0.2345,
+      "Kano": 0.2063,
+      "Kaduna": 0.1613,
+      "Anambra": 0.1265,
+      "Enugu": 0.1161,
+      "Oyo": 0.0952,
+      "Kwara": 0.0941,
+      "Delta": 0.0872,
+      "FCT Abuja": 0.0217,
+      "Rivers": -0.1023
+    },
+    "excluding_inactive": {
+      "revenue_lost": -1382720,
+      "distributors_declining": 5
+    },
+    "size_vs_growth_correlation": 0.03
+  }
+}

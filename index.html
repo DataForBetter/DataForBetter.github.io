@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adeyemi Zainab</title>
+<meta name="description" content="Business intelligence analyst. Excel, SQL and Power BI case studies built around business questions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a consulting-report reading column. Typography-led hero with an analytical figure, ruled sections, case studies as structured one-pagers with a sticky contents rail. */
+:root{
+  --bg:#F8F6F2;
+  --surface:#FFFFFF;
+  --ink:#1D1B1B;
+  --muted:#6B6562;
+  --rule:#E3DED8;
+  --accent:#7A1F2D;
+  --accent-soft:rgba(122,31,45,.08);
+  --accent-ink:#FFFFFF;
+  --fill-bg:#F3E7E8;
+  --font-display:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --step--1:.8125rem;
+  --step-0:1rem;
+  --step-1:1.1875rem;
+  --step-2:1.5rem;
+  --step-3:2.125rem;
+  --step-4:clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+  --wrap:68rem;
+  --measure:40rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#151314;--surface:#1D1A1B;--ink:#EDE8E4;--muted:#A49D99;--rule:#332E2F;
+    --accent:#D98894;--accent-soft:rgba(217,136,148,.10);--accent-ink:#1A1112;--fill-bg:#3A2428;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#151314;--surface:#1D1A1B;--ink:#EDE8E4;--muted:#A49D99;--rule:#332E2F;
+  --accent:#D98894;--accent-soft:rgba(217,136,148,.10);--accent-ink:#1A1112;--fill-bg:#3A2428;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0}
+ul{margin:0;padding:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1rem, 4vw, 2.5rem)}
+.eyebrow{font-family:var(--font-mono);font-size:var(--step--1);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.eyebrow.accent{color:var(--accent)}
+
+/* Header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--rule)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;min-height:3.75rem}
+.brand{font-family:var(--font-display);font-size:var(--step-1);text-decoration:none;white-space:nowrap}
+.brand span{color:var(--accent)}
+.nav{display:flex;gap:1.25rem;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:.875rem;color:var(--muted);text-decoration:none;white-space:nowrap;padding-block:.25rem}
+.nav a:hover{color:var(--ink)}
+
+/* Buttons and chips */
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:500 .9375rem var(--font-body);padding:.7rem 1.15rem;border-radius:2px;text-decoration:none;border:1px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{opacity:.88}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-family:var(--font-mono);font-size:.75rem;padding:.2rem .55rem;border:1px solid var(--rule);border-radius:2px;color:var(--muted);white-space:nowrap}
+.status{font-family:var(--font-mono);font-size:.75rem;padding:.2rem .55rem;border-radius:2px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+
+/* Hero */
+.hero{padding-block:clamp(3rem, 8vw, 6rem) clamp(3rem, 6vw, 4.5rem);border-bottom:1px solid var(--rule)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.hero h1{font-size:var(--step-4);letter-spacing:-.01em;margin-block:1rem 1.5rem}
+.hero h1 em{color:var(--accent);font-style:italic}
+.hero .lede{font-size:var(--step-1);color:var(--muted);max-width:34rem}
+.hero .lede strong{color:var(--ink);font-weight:500}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.figure-card{background:var(--surface);border:1px solid var(--rule);padding:1.25rem 1.25rem 1rem}
+.figure-card svg{display:block;width:100%;height:auto}
+.figure-card figcaption{font-size:var(--step--1);color:var(--muted);margin-top:.75rem;line-height:1.5}
+.lc-axis{stroke:var(--muted);stroke-width:1}
+.lc-grid{stroke:var(--rule);stroke-width:1}
+.lc-eq{stroke:var(--muted);stroke-width:1.25;stroke-dasharray:4 4;fill:none}
+.lc-curve{stroke:var(--accent);stroke-width:2.5;fill:none}
+.lc-area{fill:var(--accent-soft)}
+.lc-text{fill:var(--muted);font-family:var(--font-mono);font-size:10px}
+.lc-label{fill:var(--ink);font-family:var(--font-body);font-size:11px}
+.lc-dot{fill:var(--accent)}
+
+/* Sections */
+section.block{padding-block:clamp(3.5rem,7vw,5.5rem);border-bottom:1px solid var(--rule)}
+.section-head{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem;margin-bottom:2.5rem;align-items:baseline}
+.section-head h2{font-size:var(--step-3)}
+.two-col{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem}
+
+/* Featured work */
+.featured{display:grid;gap:0;border-top:1px solid var(--rule)}
+.feature{display:grid;grid-template-columns:3rem minmax(0,1fr) minmax(0,15rem);gap:1.5rem;padding-block:2rem;border-bottom:1px solid var(--rule);text-decoration:none;align-items:start}
+.feature .idx{font-family:var(--font-mono);font-size:var(--step--1);color:var(--accent);padding-top:.4rem}
+.feature h3{font-size:var(--step-2);margin-block:.35rem .6rem;transition:color .15s}
+.feature p{color:var(--muted);max-width:var(--measure)}
+.feature .side{display:grid;gap:.75rem;justify-items:start}
+.feature .read{font-size:.875rem;font-weight:500;color:var(--accent);margin-top:.9rem;display:inline-block}
+.feature:hover h3{color:var(--accent)}
+.more-head{margin-block:3.5rem 1.25rem}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--rule);padding:1.5rem;text-decoration:none;display:grid;gap:.75rem;align-content:start}
+.card h3{font-size:var(--step-1);line-height:1.3}
+.card p{color:var(--muted);font-size:.9375rem}
+.card:hover{border-color:var(--accent)}
+.card .top{display:flex;justify-content:space-between;gap:.5rem;align-items:center;flex-wrap:wrap}
+
+/* About */
+.prose{max-width:var(--measure);display:grid;gap:1.1rem}
+.prose p{font-size:var(--step-1);line-height:1.65}
+.prose p:first-child{font-family:var(--font-display);font-size:var(--step-2);line-height:1.4}
+.method{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-top:3rem;border-top:1px solid var(--rule);padding-top:2rem}
+.method h3{font-size:var(--step-1);margin-block:.5rem}
+.method p{color:var(--muted);font-size:.9375rem}
+.interests{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+
+/* Experience */
+.timeline{display:grid;gap:0;border-top:1px solid var(--rule)}
+.role{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem;padding-block:1.75rem;border-bottom:1px solid var(--rule)}
+.role .when{font-family:var(--font-mono);font-size:var(--step--1);color:var(--muted);font-variant-numeric:tabular-nums;padding-top:.25rem}
+.role h3{font-size:var(--step-1);font-family:var(--font-body);font-weight:600}
+.role .org{color:var(--accent);font-size:.9375rem;margin-top:.15rem}
+.role ul{margin-top:.85rem;padding-left:1.1rem;display:grid;gap:.4rem;color:var(--muted);max-width:var(--measure)}
+.edu{margin-top:3rem;display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:2rem}
+.edu-card{background:var(--surface);border:1px solid var(--rule);padding:1.5rem;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem 2rem;align-items:start}
+.edu-card h3{font-size:var(--step-2)}
+.edu-card .sub{color:var(--muted)}
+.grade{text-align:right}
+.grade .num{font-family:var(--font-display);font-size:var(--step-3);color:var(--accent);font-variant-numeric:tabular-nums;line-height:1}
+.grade .of{font-family:var(--font-mono);font-size:var(--step--1);color:var(--muted)}
+.edu-card .course{grid-column:1/-1;color:var(--muted);font-size:.9375rem;border-top:1px solid var(--rule);padding-top:1rem}
+
+/* Skills */
+.skill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem}
+.skill-grid h3{font-size:var(--step-1);margin-bottom:1rem}
+.skill-list{list-style:none;display:grid;gap:0;border-top:1px solid var(--rule)}
+.skill-list li{padding-block:.6rem;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:1rem}
+.skill-list li span:last-child{font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
+.certs{margin-top:3rem}
+.cert-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:1rem;margin-top:1rem}
+.cert-list li{border-left:2px solid var(--accent);padding:.25rem 0 .25rem .9rem}
+.cert-list .issuer{display:block;font-family:var(--font-mono);font-size:.75rem;color:var(--muted);margin-top:.15rem}
+
+/* Contact */
+.contact h2{font-size:var(--step-4);max-width:18ch}
+.contact-rows{margin-top:2.5rem;border-top:1px solid var(--rule);display:grid}
+.contact-row{display:grid;grid-template-columns:minmax(0,10rem) minmax(0,1fr) auto;gap:1rem;align-items:center;padding-block:1rem;border-bottom:1px solid var(--rule)}
+.contact-row .val{font-size:var(--step-1);overflow-wrap:anywhere}
+.contact-row .val.pending{color:var(--muted);font-style:italic;font-size:var(--step-0)}
+.copy{font:500 .8125rem var(--font-body);background:none;border:1px solid var(--rule);color:var(--muted);padding:.35rem .7rem;border-radius:2px;cursor:pointer}
+.copy:hover{border-color:var(--ink);color:var(--ink)}
+footer{padding-block:2rem 3rem;color:var(--muted);font-size:var(--step--1)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+/* Case study */
+.cs-head{padding-block:clamp(2.5rem,6vw,4.5rem) 2.5rem;border-bottom:1px solid var(--rule)}
+.back{font-size:.875rem;color:var(--muted);text-decoration:none;display:inline-block;margin-bottom:2rem}
+.back:hover{color:var(--accent)}
+.cs-head h1{font-size:var(--step-4);margin-block:.75rem 1.25rem;max-width:20ch}
+.cs-head .summary{font-size:var(--step-1);color:var(--muted);max-width:var(--measure)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.5rem;margin-top:2.5rem;border-top:1px solid var(--rule);padding-top:1.5rem}
+.meta dt{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.meta dd{margin:0;font-size:.9375rem}
+.shot{margin-block:2.5rem 0;aspect-ratio:16/8;max-width:100%;border:1px dashed var(--rule);background:
+  repeating-linear-gradient(0deg,transparent 0 39px,var(--rule) 39px 40px),var(--surface);display:grid;place-items:center;text-align:center;padding:1.5rem}
+.shot p{font-family:var(--font-mono);font-size:var(--step--1);color:var(--muted);background:var(--surface);padding:.5rem .8rem;border:1px solid var(--rule)}
+.cs-body{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);gap:3rem;padding-block:3rem 4rem}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 5rem);align-self:start;display:grid;gap:.1rem}
+.toc a{font-size:.8125rem;color:var(--muted);text-decoration:none;padding:.3rem 0 .3rem .75rem;border-left:1px solid var(--rule)}
+.toc a:hover{color:var(--accent);border-left-color:var(--accent)}
+.cs-sections{display:grid;gap:0;min-width:0}
+.cs-sec{padding-block:2rem;border-bottom:1px solid var(--rule);max-width:44rem}
+.cs-sec:first-child{padding-top:0}
+.cs-sec h2{font-size:var(--step-2);margin-bottom:1rem;display:flex;gap:.9rem;align-items:baseline}
+.cs-sec h2 .n{font-family:var(--font-mono);font-size:var(--step--1);color:var(--accent);min-width:1.5rem}
+.cs-sec p{margin-bottom:.9rem}
+.cs-sec p:last-child{margin-bottom:0}
+.cs-sec ul,.cs-sec ol{padding-left:1.2rem;display:grid;gap:.5rem}
+.cs-sec li::marker{color:var(--accent)}
+.qs{list-style:none;padding:0 !important;counter-reset:q}
+.qs li{counter-increment:q;padding-left:2.2rem;position:relative;font-family:var(--font-display);font-size:var(--step-1);line-height:1.4}
+.qs li::before{content:"Q" counter(q);position:absolute;left:0;top:.2rem;font-family:var(--font-mono);font-size:.75rem;color:var(--accent)}
+.todo{background:var(--fill-bg);border-left:2px solid var(--accent);padding:.75rem 1rem;color:var(--ink);font-size:.9375rem;list-style:none;margin-left:-1.2rem}
+.note{font-size:var(--step--1);color:var(--muted);border-top:1px solid var(--rule);padding-top:.75rem;margin-top:1rem}
+.pipeline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-top:.5rem;border:1px solid var(--rule);background:var(--surface)}
+.pipeline div{padding:1rem;border-right:1px solid var(--rule);min-width:0}
+.pipeline div:last-child{border-right:0}
+.pipeline b{display:block;font-family:var(--font-mono);font-size:.7rem;color:var(--accent);font-weight:500;margin-bottom:.35rem}
+.pipeline span{font-size:.875rem;line-height:1.4;display:block}
+.cs-next{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding-bottom:4rem}
+.cs-next a{border:1px solid var(--rule);background:var(--surface);padding:1.25rem;text-decoration:none;display:grid;gap:.35rem}
+.cs-next a:hover{border-color:var(--accent)}
+.cs-next a.right{text-align:right}
+.cs-next .t{font-family:var(--font-display);font-size:var(--step-1)}
+
+.gallery{margin-block:2.5rem 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,36rem),1fr));gap:1.5rem}
+.gallery figure{margin:0;background:var(--surface);border:1px solid var(--rule);padding:.75rem}
+.gallery img{display:block;width:100%;height:auto}
+.gallery figcaption{font-size:var(--step--1);color:var(--muted);margin-top:.6rem;line-height:1.5}
+
+/* Responsive */
+@media (max-width: 860px){
+  .hero-grid,.section-head,.two-col,.role,.edu,.skill-grid,.cs-body{grid-template-columns:minmax(0,1fr)}
+  .section-head{gap:.75rem}
+  .role,.edu{gap:.5rem}
+  .cards,.method{grid-template-columns:minmax(0,1fr)}
+  .feature{grid-template-columns:2rem minmax(0,1fr)}
+  .feature .side{grid-column:2}
+  .meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .toc{display:none}
+  .pipeline{grid-template-columns:minmax(0,1fr)}
+  .pipeline div{border-right:0;border-bottom:1px solid var(--rule)}
+  .pipeline div:last-child{border-bottom:0}
+  .figure-card{max-width:26rem}
+}
+@media (max-width: 520px){
+  .contact-row{grid-template-columns:minmax(0,1fr) auto}
+  .contact-row .eyebrow{grid-column:1/-1}
+  .edu-card{grid-template-columns:minmax(0,1fr)}
+  .grade{text-align:left}
+  .cs-next{grid-template-columns:minmax(0,1fr)}
+  .cs-next a.right{text-align:left}
+  .nav{gap:1rem}
+}
+</style>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Adeyemi Zainab<span>.</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home-view">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow accent">Business Intelligence Analyst · Lagos, Nigeria</p>
+        <h1>Turning business data into <em>meaningful insights</em> and better decisions.</h1>
+        <p class="lede">I'm <strong>Adeyemi Zainab</strong>, a business graduate and consulting professional. I combine business understanding with Excel, SQL and Power BI to analyse performance, identify opportunities and develop data-driven solutions to real business problems.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#work">View case studies</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <!-- Photo slot: replace this figure with a headshot later without changing the layout -->
+      <figure class="figure-card" style="margin:0">
+        <svg viewBox="0 0 320 330" role="img" aria-labelledby="lc-title">
+          <title id="lc-title">Illustrative Lorenz curve showing sales concentrated in a small share of distributors</title>
+          <line class="lc-grid" x1="40" y1="170" x2="300" y2="170"/>
+          <line class="lc-grid" x1="170" y1="40" x2="170" y2="300"/>
+          <line class="lc-grid" x1="40" y1="40" x2="300" y2="40"/>
+          <line class="lc-grid" x1="300" y1="40" x2="300" y2="300"/>
+          <polygon class="lc-area" points="40,300 66,299.4 92,296 118,288.6 144,276 170,257.1 196,231.1 222,197 248,154.4 274,102.4 300,40"/>
+          <line class="lc-eq" x1="40" y1="300" x2="300" y2="40"/>
+          <polyline class="lc-curve" points="40,300 66,299.4 92,296 118,288.6 144,276 170,257.1 196,231.1 222,197 248,154.4 274,102.4 300,40"/>
+          <line class="lc-axis" x1="40" y1="300" x2="300" y2="300"/>
+          <line class="lc-axis" x1="40" y1="40" x2="40" y2="300"/>
+          <line class="lc-axis" x1="248" y1="158" x2="248" y2="262" style="stroke:var(--accent);stroke-dasharray:2 3"/>
+          <circle class="lc-dot" cx="248" cy="154.4" r="3.5"/>
+          <text class="lc-label" x="294" y="276" text-anchor="end">Top 20% of distributors</text>
+          <text class="lc-label" x="294" y="290" text-anchor="end" style="fill:var(--muted)">hold a large share of sales</text>
+          <text class="lc-label" x="120" y="196" transform="rotate(-45 120 196)" style="fill:var(--muted)">Line of equality</text>
+          <text class="lc-text" x="40" y="316" text-anchor="middle">0</text>
+          <text class="lc-text" x="170" y="316" text-anchor="middle">50%</text>
+          <text class="lc-text" x="300" y="316" text-anchor="middle">100%</text>
+          <text class="lc-text" x="34" y="303" text-anchor="end">0</text>
+          <text class="lc-text" x="34" y="173" text-anchor="end">50%</text>
+          <text class="lc-text" x="34" y="43" text-anchor="end">100%</text>
+          <text class="lc-text" x="170" y="329" text-anchor="middle">Cumulative share of distributors</text>
+          <text class="lc-text" x="12" y="170" text-anchor="middle" transform="rotate(-90 12 170)">Cumulative share of sales</text>
+        </svg>
+        <figcaption>Every case study starts with a business question. This one asked how evenly sales were spread across a distributor network. Illustrative curve.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Selected work</p>
+        <h2>Case studies built around business questions, not just dashboards.</h2>
+      </div>
+      <div class="featured" id="featured-list"></div>
+      <p class="eyebrow more-head">More projects</p>
+      <div class="cards" id="more-list"></div>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap two-col">
+      <p class="eyebrow">About</p>
+      <div>
+        <div class="prose">
+          <p>I'm interested in how businesses actually operate, and how data can show them where to improve.</p>
+          <p>I am a business graduate and consulting professional. My work sits at the intersection of business strategy and analytics, where I combine analytical tools with commercial reasoning to uncover meaningful insights and support better decisions.</p>
+          <p>At Andersen (formerly Verraki Partners), I support strategy, operational improvement and organisational diagnostic engagements across different industries. That work taught me to start with the decision a manager needs to make, then work back to the data.</p>
+        </div>
+        <div class="interests">
+          <span class="eyebrow" style="margin-right:.5rem">Interested in</span>
+          <span class="chip">Business intelligence</span>
+          <span class="chip">Customer analytics</span>
+          <span class="chip">Operational performance</span>
+          <span class="chip">Analytics for growing businesses</span>
+        </div>
+        <div class="method">
+          <div>
+            <p class="eyebrow accent">Step 1</p>
+            <h3>Structure the problem</h3>
+            <p>Define the business question, the decision it supports and the evidence needed to answer it.</p>
+          </div>
+          <div>
+            <p class="eyebrow accent">Step 2</p>
+            <h3>Work the data</h3>
+            <p>Consolidate, clean and model the data in Excel, Power Query, SQL and Power BI, then test what it shows.</p>
+          </div>
+          <div>
+            <p class="eyebrow accent">Step 3</p>
+            <h3>Communicate the decision</h3>
+            <p>Turn findings into implications and recommendations that management can act on.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Experience</p>
+        <h2>Consulting work across strategy, operations and analytics.</h2>
+      </div>
+      <div class="timeline">
+        <article class="role">
+          <p class="when">Jul 2026 to Present</p>
+          <div>
+            <h3>Graduate Trainee, Business Advisory</h3>
+            <p class="org">Andersen (formerly Verraki Partners)</p>
+            <ul>
+              <li>Support business strategy, operational improvement and organisational diagnostic engagements across different industries.</li>
+              <li>Conduct business research, exploratory data analysis and performance assessments to support client recommendations.</li>
+              <li>Develop analytical reports, dashboards and executive presentations to communicate findings to stakeholders.</li>
+              <li>Support internal data analytics learning sessions covering Excel, Power Query and Power BI.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="role">
+          <p class="when">Jul 2025 to Jun 2026</p>
+          <div>
+            <h3>Business Advisory Intern</h3>
+            <p class="org">Andersen (formerly Verraki Partners)</p>
+            <ul>
+              <li>Supported consulting engagements involving business strategy, operational performance and market analysis.</li>
+              <li>Analysed business datasets to identify performance gaps, operational constraints and improvement opportunities.</li>
+              <li>Developed research materials, analytical models and client presentations.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="role">
+          <p class="when">Jul to Sep 2023</p>
+          <div>
+            <h3>Data Analysis Intern</h3>
+            <p class="org">New Horizons Computer Learning Institute</p>
+            <ul>
+              <li>Completed practical data analytics projects using Microsoft Excel.</li>
+              <li>Applied data cleaning, transformation, pivot tables and dashboarding techniques.</li>
+              <li>Developed analytical reports from business datasets.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="edu">
+        <p class="eyebrow">Education</p>
+        <div class="edu-card">
+          <div>
+            <h3>B.Sc. Business Administration</h3>
+            <p class="sub">Lead City University, Ibadan · First Class Honours</p>
+          </div>
+          <div class="grade">
+            <div class="num">4.52</div>
+            <div class="of">CGPA out of 5.00</div>
+          </div>
+          <p class="course">Relevant coursework: Statistics, Analysis of Business Decisions, Management Accounting, Business Policy and Strategy, Operations Management.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Skills &amp; certifications</p>
+        <h2>Technical tools, paired with business judgement.</h2>
+      </div>
+      <div class="skill-grid">
+        <div>
+          <h3>Data analytics &amp; business intelligence</h3>
+          <ul class="skill-list">
+            <li><span>Microsoft Excel</span><span>Advanced</span></li>
+            <li><span>Power BI</span><span>Modelling · DAX · Dashboards</span></li>
+            <li><span>Power Query</span><span>ETL</span></li>
+            <li><span>SQL</span><span>MySQL</span></li>
+            <li><span>Data cleaning &amp; transformation</span><span></span></li>
+            <li><span>Exploratory data analysis</span><span></span></li>
+            <li><span>Data visualisation &amp; dashboard development</span><span></span></li>
+            <li><span>KPI development &amp; performance monitoring</span><span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Business &amp; consulting</h3>
+          <ul class="skill-list">
+            <li><span>Business analysis</span><span></span></li>
+            <li><span>Strategic research</span><span></span></li>
+            <li><span>Business process analysis</span><span></span></li>
+            <li><span>Performance assessment</span><span></span></li>
+            <li><span>Problem structuring</span><span></span></li>
+            <li><span>Stakeholder communication</span><span></span></li>
+            <li><span>Executive reporting</span><span></span></li>
+            <li><span>PowerPoint presentations</span><span></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="certs">
+        <h3 style="font-size:var(--step-1)">Certifications &amp; training</h3>
+        <ul class="cert-list">
+          <li>Advanced Excel for Data Analysis<span class="issuer">Alison</span></li>
+          <li>Business Analytics with Excel<span class="issuer">Coursera</span></li>
+          <li>Full Data Analytics Course<span class="issuer">BeTechified</span></li>
+          <li>MySQL and Statistics for Data Analytics<span class="issuer">Alison</span></li>
+          <li>Fundamentals of Project Management<span class="issuer">Alison</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow accent">Contact</p>
+      <h2 style="margin-top:1rem">Have a business question that data could answer? Let's talk.</h2>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="eyebrow">Email</span>
+          <span class="val pending" id="c-email">Professional email to be added</span>
+          <button class="copy" type="button" data-copy="c-email">Copy</button>
+        </div>
+        <div class="contact-row">
+          <span class="eyebrow">LinkedIn</span>
+          <span class="val pending">LinkedIn profile to be added</span>
+          <span></span>
+        </div>
+        <div class="contact-row">
+          <span class="eyebrow">GitHub</span>
+          <span class="val pending">GitHub profile to be added</span>
+          <span></span>
+        </div>
+        <div class="contact-row">
+          <span class="eyebrow">CV</span>
+          <span class="val pending">CV link to be added</span>
+          <span></span>
+        </div>
+        <div class="contact-row">
+          <span class="eyebrow">Location</span>
+          <span class="val">Lagos, Nigeria</span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main id="case-view" hidden></main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Adeyemi Zainab</span>
+    <span>Project data shown is synthetic or anonymised. Client names and confidential figures are not disclosed.</span>
+  </div>
+</footer>
+
+<script>
+const TODO = (t) => `<li class="todo">${t}</li>`;
+
+const PROJECTS = [
+  {
+    id: "adun", featured: true,
+    category: "Sales Analytics · Distribution Strategy · Network Optimisation",
+    title: "Adun Foods: Distributor Network Optimisation",
+    teaser: "How concentrated are sales across a distributor network, and where should a consumer goods business expand next?",
+    tools: ["Excel", "Power Query", "Power BI"],
+    data: "Synthetic dataset modelled on a Nigerian FMCG distributor network",
+    status: "Dashboards complete",
+    images: [
+      ["adun-foods-powerbi/dashboards/01_sales_overview.png", "Sales Overview: monthly and quarterly sales, 2024 against 2025"],
+      ["adun-foods-powerbi/dashboards/02_coverage_and_concentration.png", "Coverage and Concentration: Pareto of distributor sales, and each state's dependency on one distributor"],
+      ["adun-foods-powerbi/dashboards/03_revenue_movement.png", "Revenue Movement: how the network moved from 2024 to 2025, by distributor and by state"]
+    ],
+    sections: [
+      ["Business context", `<p>Adun Foods Nigeria Limited is a fictional consumer goods manufacturer that sells packaged foods through independent distributors across Nigeria. Distributors are its route to market, so their coverage and performance shape revenue in every region.</p>`],
+      ["Problem statement", `<p>The business had no consolidated view of which distributors drove its sales, how dependent it was on a small number of large partners, or which locations were underserved. Decisions about distributor support and expansion were based on relationships rather than evidence.</p>`],
+      ["Objectives and key questions", `<ol class="qs"><li>How did sales move across 2024 and 2025, and when does demand peak?</li><li>Where is the network present, and how dependent is each state on a single distributor?</li><li>Where did revenue move between 2024 and 2025?</li></ol><p class="note">One dashboard answers each question. No dashboard repeats another's measure and dimension pair.</p>`],
+      ["Data and tools", `<ul><li><strong>Distributor records</strong> covering location, region and status.</li><li><strong>Sales transactions</strong> by distributor, product and month.</li><li><strong>Location reference data</strong> used to map coverage.</li></ul><p style="margin-top:1rem">Excel for first review, Power Query to consolidate and clean, and Power BI to model the data, write DAX measures and build the dashboard. The model is kept as code in the project repository.</p>`],
+      ["Analytical approach", `<ol><li>Consolidated distributor, sales and location records into a star schema, and ran integrity checks on keys, duplicates and arithmetic. One defect surfaced: 228 sales dated before their distributor's onboarding date, which was corrected at source.</li><li>Measured national concentration with a Pareto view, the Herfindahl index and a Gini coefficient.</li><li>Measured dependency inside each state over active distributors only, since a distributor that has stopped trading cannot be depended on.</li><li>Measured revenue movement in naira rather than percentage growth, because percentage growth ranks a distributor that added half a million above one that added nine million.</li><li>Rejected two charts that would have misled. Both grouped distributors by a tier assigned from the same sales being explained, so they restated their own definition.</li></ol>`],
+      ["Key findings", `<ul><li>Sales grew <strong>13.35%</strong>, from ₦424.8M to ₦481.5M, with every quarter of 2025 ahead of the year before.</li><li>Nationally the network is not over-dependent on anyone. The largest distributor holds <strong>9.91%</strong> of sales, <strong>17 of 36</strong> reach 80%, and the Herfindahl index is <strong>513</strong>, well below the 1,500 that marks a concentrated market.</li><li>The exposure sits one level down. A single distributor holds <strong>77%</strong> of Lagos, <strong>70%</strong> of Kano and <strong>67%</strong> of Bauchi.</li><li><strong>2 of 14</strong> states, Borno and Ebonyi, have no active distributor.</li><li><strong>30 of 36</strong> distributors grew. Of the ₦5.17M lost, ₦3.79M came from the one distributor that stopped trading, and the state it served is the only state to decline.</li></ul><p class="note">Figures come from the synthetic dataset. Every one is reproduced by a script in the project repository.</p>`],
+      ["Business implications", `<p>The national concentration figure is reassuring and the state figure is not, and only the second is actionable. Losing the top distributor in Lagos costs 77% of that market rather than 9.91% of national revenue. Rivers shows what that looks like in practice. It lost one distributor of three and became the only state in the network to go backwards, down 10.2%, even though its two remaining distributors grew.</p>`],
+      ["Recommendations", `<ul><li>Appoint second distributors in Lagos, Kano and Bauchi, where one partner holds two thirds or more of the state.</li><li>Replace the lost distributor in Rivers, which is down to two and is the only state losing revenue.</li><li>Treat Borno and Ebonyi as candidates for entry, subject to demand data this dataset does not hold.</li><li>Track state-level dependency, not national concentration, as the recurring network KPI.</li></ul>`],
+      ["Limitations and next steps", `<p>The dataset is synthetic, so the patterns show the method rather than a real market. It holds revenue only, with no margin, cost to serve or market size, so the recommendations above cannot yet be ranked by value. Two years of monthly data is also too short to separate trend from seasonality. Next steps are profitability and route data, and demand estimates by state.</p>`]
+    ]
+  },
+  {
+    id: "coffee", featured: true,
+    category: "Customer Analytics · Retention · E-commerce",
+    title: "Coffee Retail Customer Analytics",
+    teaser: "Understanding repeat purchasing at an online coffee retailer to find its most valuable customers and test the case for subscriptions.",
+    tools: ["Excel", "Power Query", "Power BI"],
+    data: "Transaction and product data. Anonymised, with synthetic data used in public visuals",
+    status: "Anonymised client work",
+    sections: [
+      ["Business context", `<p>An online retailer selling coffee directly to consumers. Its growth depends on customers coming back, yet it had limited visibility into who returns, how often and what they buy.</p>`],
+      ["Problem statement", `<p>The business needed to understand customer purchasing behaviour, identify its most valuable customer segments and evaluate opportunities for repeat purchases and subscription offerings.</p>`],
+      ["Objectives and key questions", `<ol class="qs"><li>What share of customers buy more than once?</li><li>How long do customers typically wait between purchases?</li><li>Which customer segments are the most valuable?</li><li>Which customers and products are best suited to a subscription offer?</li></ol>`],
+      ["Data and tools", `<ul><li><strong>Transaction records</strong> with customer, order date, product and value.</li><li><strong>Product data</strong> covering product type and price.</li></ul><p style="margin-top:1rem">Power Query to clean and consolidate, Excel for exploratory analysis, and Power BI for segmentation views and dashboards.</p>`],
+      ["Analytical approach", `<ol><li>Cleaned and consolidated transaction and product data.</li><li>Analysed purchase frequency and repeat purchasing behaviour.</li><li>Calculated the time between purchases and customer reorder patterns.</li><li>Segmented customers by purchase frequency and behaviour.</li><li>Examined product preferences and purchasing patterns within each segment.</li></ol>`],
+      ["Key findings", `<ul>${TODO("Add a finding on repeat purchase behaviour, shared at a level that protects the client.")}${TODO("Add a finding on typical reorder intervals.")}${TODO("Add a finding on the most valuable customer segment and its product preferences.")}</ul>`],
+      ["Business implications", `<p>Understanding reorder timing and segment value allows the business to focus retention effort where it is most likely to pay off, rather than treating every customer the same way.</p>`],
+      ["Recommendations", `<ul><li>Use customer segments to target retention and win-back campaigns.</li><li>Prioritise subscription offers for customers with regular reorder patterns.</li><li>Time reminders and offers around typical reorder intervals.</li></ul>`],
+      ["Limitations and next steps", `<p>Results are presented at a high level to protect client confidentiality. Next steps could include cohort retention tracking and customer lifetime value modelling.</p>`]
+    ]
+  },
+  {
+    id: "beverage", featured: true,
+    category: "Operations Analytics · Production Performance",
+    title: "Beverage Manufacturing Performance Analysis",
+    teaser: "Building a structured view of production performance and the constraints that limit output at a beverage manufacturer.",
+    tools: ["Excel", "Power BI", "Business analysis"],
+    data: "Production and capacity information. Anonymised business case",
+    status: "Anonymised client work",
+    sections: [
+      ["Business context", `<p>A beverage manufacturer operating production lines with a stated installed capacity. Output was below what management expected, and the reasons were not clearly understood.</p>`],
+      ["Problem statement", `<p>The business needed greater visibility into production performance, available capacity and the operational constraints affecting output.</p>`],
+      ["Objectives and key questions", `<ol class="qs"><li>How has production volume changed over time?</li><li>How large is the gap between installed and available capacity?</li><li>Which constraints, whether equipment, raw materials or working capital, limit output most?</li><li>What information is missing for a complete diagnosis?</li></ol>`],
+      ["Data and tools", `<ul><li><strong>Historical production volumes.</strong></li><li><strong>Installed and available capacity information.</strong></li><li><strong>Operational inputs</strong> on equipment, raw materials and working capital.</li></ul><p style="margin-top:1rem">Excel for analysis, Power BI for performance views, and structured business analysis to frame the diagnosis.</p>`],
+      ["Analytical approach", `<ol><li>Assessed historical production volumes and capacity information.</li><li>Examined differences between installed and available production capacity.</li><li>Investigated potential constraints relating to equipment, raw materials and working capital.</li><li>Developed a framework for assessing capacity utilisation and production performance.</li><li>Identified information gaps and the additional metrics required for a more complete diagnosis.</li></ol>`],
+      ["Key findings", `<ul>${TODO("Add a high-level finding on the gap between installed and available capacity.")}${TODO("Add a finding on which constraint appeared most significant.")}${TODO("Add a finding on the key information gaps identified.")}</ul>`],
+      ["Business implications", `<p>Without separating capacity loss into its causes, investment can go to the wrong place. A structured view helps management decide whether to fix equipment, secure raw materials or address working capital first.</p>`],
+      ["Recommendations", `<ul><li>Adopt the capacity utilisation framework as a regular performance review tool.</li><li>Start capturing the missing metrics, such as downtime and material shortages, consistently.</li><li>Prioritise deeper investigation of the largest constraint before committing to new investment.</li></ul>`],
+      ["Limitations and next steps", `<p>This is presented as an anonymised business case, so client data and confidential findings are not published. The diagnosis was limited by gaps in available data, which the recommendations aim to close.</p>`]
+    ]
+  },
+  {
+    id: "automation", featured: false,
+    category: "Automation · Data Pipeline · Reporting",
+    title: "Automated E-Transaction Reporting",
+    teaser: "Replacing a manual weekly export with a refreshable pipeline from database to cleaned data to dashboard.",
+    tools: ["MySQL", "Power Query", "Excel", "Power BI"],
+    data: "Synthetic transaction data covering transfers, POS and card payments",
+    status: "Planned",
+    sections: [
+      ["Overview", `<p>Many businesses record electronic transactions such as bank transfers, POS and card payments in a database, then spend hours each week exporting, cleaning and summarising them by hand. This project replaces that routine with a pipeline that refreshes on demand or on a schedule.</p>`],
+      ["How it works", `<div class="pipeline"><div><b>Source</b><span>Transaction database</span></div><div><b>Extract</b><span>SQL view of new transactions</span></div><div><b>Clean</b><span>Power Query rules for types, channels and duplicates</span></div><div><b>Model</b><span>Excel or Power BI data model with date and channel tables</span></div><div><b>Report</b><span>Dashboard that updates on refresh</span></div></div>`],
+      ["Key features", `<ul><li>A SQL view that pulls transactions straight from the database.</li><li>Power Query steps that standardise, categorise and de-duplicate records on every refresh.</li><li>A data model with date and channel tables.</li><li>A dashboard showing transaction volume and value, channel mix, failed transactions and daily trends.</li><li>One-click or scheduled refresh, so no manual copying or cleaning.</li></ul>`],
+      ["Business value", `<p>Reporting time drops from hours to minutes, manual errors are removed, and finance gets a consistent daily view of transactions.</p>`]
+    ]
+  },
+  {
+    id: "excel", featured: false,
+    category: "Sales Analytics · Business Reporting",
+    title: "Excel Sales and Order Performance Dashboard",
+    teaser: "An Excel reporting solution for sales trends, order performance, product contribution and KPIs.",
+    tools: ["Excel", "Power Query", "Pivot Tables"],
+    data: "Sales and order data",
+    status: "",
+    sections: [
+      ["Overview", `<p>An Excel-based reporting solution designed to analyse sales trends, order performance, product contribution and business performance indicators.</p>`],
+      ["Key features", `<ul><li>Data cleaning and transformation in Power Query.</li><li>Interactive sales reporting with slicers.</li><li>Product and period comparisons.</li><li>KPI summaries.</li><li>Dashboard visualisation.</li></ul>`]
+    ]
+  },
+  {
+    id: "sql", featured: false,
+    category: "SQL · Customer Analytics",
+    title: "SQL Customer and Sales Analysis",
+    teaser: "Exploring customer transactions, repeat purchasing and product performance with MySQL.",
+    tools: ["MySQL"],
+    data: "Synthetic customer and transaction dataset",
+    status: "In development",
+    sections: [
+      ["Overview", `<p>A SQL-based analytical project exploring customer transactions, repeat purchasing behaviour, product performance and sales patterns.</p>`],
+      ["Key features", `<ul><li>Data preparation and SQL joins.</li><li>Customer purchase frequency analysis.</li><li>Product-level sales aggregation.</li><li>Customer segmentation queries.</li><li>Business-focused interpretation of results.</li></ul>`],
+      ["Next steps", `<p>This project is being developed into a full public case study using a synthetic dataset.</p>`]
+    ]
+  }
+];
+
+const chips = (arr) => `<div class="chips">${arr.map(t => `<span class="chip">${t}</span>`).join("")}</div>`;
+
+function renderLists(){
+  const feat = PROJECTS.filter(p => p.featured);
+  document.getElementById("featured-list").innerHTML = feat.map((p, i) => `
+    <a class="feature" href="#${p.id}">
+      <span class="idx">0${i + 1}</span>
+      <div>
+        <p class="eyebrow">${p.category}</p>
+        <h3>${p.title}</h3>
+        <p>${p.teaser}</p>
+        <span class="read">Read case study →</span>
+      </div>
+      <div class="side">${chips(p.tools)}${p.status ? `<span class="status">${p.status}</span>` : ""}</div>
+    </a>`).join("");
+  document.getElementById("more-list").innerHTML = PROJECTS.filter(p => !p.featured).map(p => `
+    <a class="card" href="#${p.id}">
+      <div class="top"><span class="eyebrow">${p.category.split(" · ")[0]}</span>${p.status ? `<span class="status">${p.status}</span>` : ""}</div>
+      <h3>${p.title}</h3>
+      <p>${p.teaser}</p>
+      ${chips(p.tools)}
+    </a>`).join("");
+}
+
+function renderCase(p){
+  const i = PROJECTS.indexOf(p);
+  const prev = PROJECTS[(i - 1 + PROJECTS.length) % PROJECTS.length];
+  const next = PROJECTS[(i + 1) % PROJECTS.length];
+  const numbered = p.featured;
+  const secId = (k) => `${p.id}-s${k + 1}`;
+  return `
+  <div class="wrap">
+    <header class="cs-head">
+      <a class="back" href="#work">← All work</a>
+      <p class="eyebrow accent">${p.category}</p>
+      <h1>${p.title}</h1>
+      <p class="summary">${p.teaser}</p>
+      <dl class="meta">
+        <div><dt>Tools</dt><dd>${p.tools.join(", ")}</dd></div>
+        <div><dt>Data</dt><dd>${p.data}</dd></div>
+        <div><dt>Type</dt><dd>${p.featured ? "Featured case study" : "Project"}</dd></div>
+        <div><dt>Status</dt><dd>${p.status || "Complete"}</dd></div>
+      </dl>
+      ${p.images ? `<div class="gallery">${p.images.map(([src, caption]) => `<figure><img src="${src}" alt="${caption}" loading="lazy"><figcaption>${caption}</figcaption></figure>`).join("")}</div><p class="note">Captured from Power BI Desktop. Every figure comes from the project's synthetic dataset.</p>` : `<div class="shot"><p>Dashboard screenshot to be added</p></div>`}
+    </header>
+    <div class="cs-body">
+      <nav class="toc" aria-label="On this page">
+        <p class="eyebrow" style="margin-bottom:.6rem">On this page</p>
+        ${p.sections.map((s, k) => `<a href="#${secId(k)}">${s[0]}</a>`).join("")}
+      </nav>
+      <div class="cs-sections">
+        ${p.sections.map((s, k) => `
+          <section class="cs-sec" id="${secId(k)}">
+            <h2>${numbered ? `<span class="n">${String(k + 1).padStart(2, "0")}</span>` : ""}${s[0]}</h2>
+            ${s[1]}
+          </section>`).join("")}
+      </div>
+    </div>
+    <nav class="cs-next" aria-label="More projects">
+      <a href="#${prev.id}"><span class="eyebrow">← Previous</span><span class="t">${prev.title}</span></a>
+      <a class="right" href="#${next.id}"><span class="eyebrow">Next →</span><span class="t">${next.title}</span></a>
+    </nav>
+  </div>`;
+}
+
+const homeView = document.getElementById("home-view");
+const caseView = document.getElementById("case-view");
+let lastCase = null;
+
+function route(){
+  const h = location.hash.slice(1);
+  const proj = PROJECTS.find(p => p.id === h);
+  const inCase = PROJECTS.find(p => h.startsWith(p.id + "-s"));
+  if (proj){
+    caseView.innerHTML = renderCase(proj);
+    caseView.hidden = false; homeView.hidden = true;
+    lastCase = proj.id;
+    window.scrollTo(0, 0);
+    document.title = `${proj.title.split(":")[0]} · Adeyemi Zainab`;
+    return;
+  }
+  if (inCase && lastCase === inCase.id){ return; }
+  if (inCase){
+    caseView.innerHTML = renderCase(inCase);
+    caseView.hidden = false; homeView.hidden = true;
+    lastCase = inCase.id;
+    requestAnimationFrame(() => document.getElementById(h)?.scrollIntoView());
+    return;
+  }
+  const wasCase = !homeView.hidden ? false : true;
+  caseView.hidden = true; homeView.hidden = false; lastCase = null;
+  document.title = "Adeyemi Zainab";
+  if (wasCase){
+    requestAnimationFrame(() => {
+      const el = h ? document.getElementById(h) : null;
+      if (el) el.scrollIntoView(); else window.scrollTo(0, 0);
+    });
+  }
+}
+
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-copy]");
+  if (!b) return;
+  const el = document.getElementById(b.dataset.copy);
+  const text = el.textContent.trim();
+  const done = () => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); };
+  navigator.clipboard?.writeText(text).then(done).catch(() => {
+    const r = document.createRange(); r.selectNodeContents(el);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+  });
+});
+
+renderLists();
+window.addEventListener("hashchange", route);
+route();
+</script>
