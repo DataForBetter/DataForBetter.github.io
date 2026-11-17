@@ -305,7 +305,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
         <div class="prose">
           <p>I'm interested in how businesses actually operate, and how data can show them where to improve.</p>
           <p>I am a business graduate and consulting professional. My work sits at the intersection of business strategy and analytics, where I combine analytical tools with commercial reasoning to uncover meaningful insights and support better decisions.</p>
-          <p>At Andersen (formerly Verraki Partners), I support strategy, operational improvement and organisational diagnostic engagements across different industries. That work taught me to start with the decision a manager needs to make, then work back to the data.</p>
+          <p>At Andersen Consulting Nigeria Limited, I support strategy, operational improvement and organisational diagnostic engagements across different industries. That work taught me to start with the decision a manager needs to make, then work back to the data.</p>
         </div>
         <div class="interests">
           <span class="eyebrow" style="margin-right:.5rem">Interested in</span>
@@ -346,24 +346,24 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
           <p class="when">Jul 2026 to Present</p>
           <div>
             <h3>Graduate Trainee, Business Advisory</h3>
-            <p class="org">Andersen (formerly Verraki Partners)</p>
+            <p class="org">Andersen Consulting Nigeria Limited</p>
             <ul>
-              <li>Support business strategy, operational improvement and organisational diagnostic engagements across different industries.</li>
-              <li>Conduct business research, exploratory data analysis and performance assessments to support client recommendations.</li>
-              <li>Develop analytical reports, dashboards and executive presentations to communicate findings to stakeholders.</li>
-              <li>Support internal data analytics learning sessions covering Excel, Power Query and Power BI.</li>
+              <li>Led the organisation and people workstream on a manufacturing revitalisation, covering eight functions and ending in six board-approved recommendations and an 18-month roadmap.</li>
+              <li>Lead the firm's Data Analytics Community of Practice, building analytics skills across teams and creating reusable tools now used on client work.</li>
+              <li>Analysed distributor coverage for a consumer goods client to locate the gaps in its route to market.</li>
+              <li>Built and maintained a macroeconomic database of twenty indicators used across engagements.</li>
             </ul>
           </div>
         </article>
         <article class="role">
           <p class="when">Jul 2025 to Jun 2026</p>
           <div>
-            <h3>Business Advisory Intern</h3>
-            <p class="org">Andersen (formerly Verraki Partners)</p>
+            <h3>Business Analysis Intern, NYSC</h3>
+            <p class="org">Andersen Consulting Nigeria Limited</p>
             <ul>
-              <li>Supported consulting engagements involving business strategy, operational performance and market analysis.</li>
-              <li>Analysed business datasets to identify performance gaps, operational constraints and improvement opportunities.</li>
-              <li>Developed research materials, analytical models and client presentations.</li>
+              <li>Built the research and analysis behind consulting proposals for five clients in energy, manufacturing and consumer goods.</li>
+              <li>Ran vendor onboarding for an energy client, from data review through to onboarding compliance.</li>
+              <li>Supported an organisational structure review for a public sector financial institution.</li>
             </ul>
           </div>
         </article>
@@ -373,9 +373,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
             <h3>Data Analysis Intern</h3>
             <p class="org">New Horizons Computer Learning Institute</p>
             <ul>
-              <li>Completed practical data analytics projects using Microsoft Excel.</li>
-              <li>Applied data cleaning, transformation, pivot tables and dashboarding techniques.</li>
-              <li>Developed analytical reports from business datasets.</li>
+              <li>Built a recommendation framework with a team of analysts using Netflix's public data.</li>
+              <li>Designed interactive Power BI dashboards and reports from raw business datasets.</li>
+              <li>Cleaned, validated and transformed data across every project on the programme.</li>
             </ul>
           </div>
         </article>
@@ -495,6 +495,31 @@ const TODO = (t) => `<li class="todo">${t}</li>`;
 
 const PROJECTS = [
   {
+    id: "sql", featured: true,
+    category: "SQL \u00b7 Public Data \u00b7 Price Analysis",
+    title: "Nigerian fuel and food prices",
+    teaser: "Nineteen months of official price data. The national average says nothing happened. The states say otherwise.",
+    tools: ["PostgreSQL", "Python", "Supabase"],
+    data: "National Bureau of Statistics of Nigeria, 102 published files",
+    status: "Live",
+    repo: "https://github.com/DataForBetter/Nigeria-Fuel-Prices-SQL",
+    sections: [
+      ["The question", `<p>Nigeria removed its petrol subsidy in 2023. The argument for removing it was that competition would even prices out across the country. The National Bureau of Statistics publishes the prices every month, so the claim is checkable.</p><p>I wanted to answer one thing. Does Nigeria have one fuel market, or thirty-seven?</p>`],
+
+      ["102 spreadsheets, none of them data", `<p>NBS publishes these as formatted reports rather than as data, and most of the work was getting them into a state where a question could be asked. Header rows move between the first and third row depending on the file. Two different products share one sheet in the kerosene and gas releases. Consecutive files overlap by two months. The petrol series leaves out the zone labels every other series carries, and files Taraba in the wrong zone in all nineteen months.</p><p>I wrote a parser that reads all 102 files into one table, and recorded every defect rather than quietly correcting it. The check that matters is whether the result still matches what NBS actually published. It does, to the kobo, in both months I tested: <strong>\u20a61,061.35</strong> for November 2025 and <strong>\u20a61,288.54</strong> for March 2026.</p><p>That same check caught an error in press coverage of one of those releases, which reported several northern states above \u20a61,200. The highest state in the release is Borno, at \u20a61,133.86.</p>`],
+
+      ["The average said nothing happened", `<p>Between December 2024 and February 2025 the national petrol price moved <strong>4.8%</strong>. On that number, a quiet two months.</p><p>Over the same two months the gap between the cheapest and the dearest state went from 20% to <strong>81%</strong>. Jigawa was paying \u20a61,730 a litre. Oyo was paying \u20a6957.</p><p>The gap also had a shape. It tracked distance from Lagos, where the refinery and the import terminals are. Through those months the North West paid <strong>33% more</strong> than the South West. The four dearest states were Jigawa, Sokoto, Kaduna and Kano. The four cheapest were Oyo, Ekiti, Osun and Lagos.</p><p>Then it closed, in a single month. By May 2025 every zone in the country sat inside a \u20a629 band, and stayed there.</p>`],
+
+      ["It only happened to petrol", `<p>The detail that makes this more than a bad quarter is that no other fuel did it.</p><p>Petrol is normally the <em>most</em> uniformly priced fuel in Nigeria, usually 20 to 25% between the cheapest and dearest state. Diesel and kerosene are routinely far wider, 60 to 90%, because they are thinly distributed. For four months petrol became as uneven as diesel, while diesel and kerosene themselves did nothing unusual and cooking gas barely moved.</p><p>Diesel and kerosene travel the same roads, through the same depots, in the same trucks. If the roads, the currency or the crude price had been the problem, all of them would have moved. Only one did. That points at something specific to how petrol was being distributed, rather than at a general energy shock.</p>`],
+
+      ["A year later, the opposite shock", `<p>Early 2026 reads the same in a headline and is nothing alike underneath. Between February and May 2026 petrol rose <strong>52%</strong>, and this time everything else rose with it. Diesel went up <strong>131%</strong>, from \u20a61,420 to \u20a63,277 a litre. Kerosene and cooking gas rose too.</p><p>But the states stayed in line with one another. The spread between them barely moved.</p><p>So the two episodes are opposites. In 2025 the price level held still and the country came apart. In 2026 the country held together and the level jumped. The first is a distribution problem. The second is a cost problem arriving from outside, which fits a period when crude crossed $100 a barrel and the UN ranked Nigeria\u2019s diesel increase the steepest of any country it assessed.</p>`],
+
+      ["Why this is useful", `<ul><li>Anyone setting regional delivery pricing can see that moving fuel inland usually costs little and occasionally costs a great deal, and that the switch between those two states happens in weeks rather than years.</li><li>Anyone pricing a product uniformly across Nigeria should know that the national fuel average will not warn them when one region decouples.</li><li>The test itself is reusable on any price series. Separate the level from the spread. If the level moves and the spread does not, the cause is upstream. If the spread moves and the level does not, the cause is distribution.</li></ul>`],
+
+      ["How it was built, and what it cannot tell you", `<p>Python parses the 102 source files into two tidy tables. PostgreSQL holds them in a star schema. Each question is a separate SQL file creating views, so every figure above traces back to a query, and the whole thing runs on Supabase.</p><p>What it cannot do is tell you why. This is a price series. It shows that the North West decoupled in early 2025 and that every fuel rose in early 2026, and it explains neither. Published reporting on the same period is recorded in the repository, in a section of its own, so context and findings are never confused.</p><p>Three other limits. Food prices are published by zone and fuel by state, so any comparison between the two is coarser than the thing worth measuring. Nineteen months contains two episodes, which is not enough to establish what normal looks like. And the figures are averages of averages, so differences within a state are invisible.</p>`]
+    ]
+  },
+  {
     id: "adun", featured: true,
     category: "Sales Analytics · Distribution Strategy · Network Optimisation",
     title: "Adun Foods: Distributor Network Optimisation",
@@ -588,20 +613,6 @@ const PROJECTS = [
     sections: [
       ["Overview", `<p>An Excel-based reporting solution designed to analyse sales trends, order performance, product contribution and business performance indicators.</p>`],
       ["Key features", `<ul><li>Data cleaning and transformation in Power Query.</li><li>Interactive sales reporting with slicers.</li><li>Product and period comparisons.</li><li>KPI summaries.</li><li>Dashboard visualisation.</li></ul>`]
-    ]
-  },
-  {
-    id: "sql", featured: false,
-    category: "SQL · Customer Analytics",
-    title: "SQL Customer and Sales Analysis",
-    teaser: "Exploring customer transactions, repeat purchasing and product performance with MySQL.",
-    tools: ["MySQL"],
-    data: "Synthetic customer and transaction dataset",
-    status: "In development",
-    sections: [
-      ["Overview", `<p>A SQL-based analytical project exploring customer transactions, repeat purchasing behaviour, product performance and sales patterns.</p>`],
-      ["Key features", `<ul><li>Data preparation and SQL joins.</li><li>Customer purchase frequency analysis.</li><li>Product-level sales aggregation.</li><li>Customer segmentation queries.</li><li>Business-focused interpretation of results.</li></ul>`],
-      ["Next steps", `<p>This project is being developed into a full public case study using a synthetic dataset.</p>`]
     ]
   }
 ];
