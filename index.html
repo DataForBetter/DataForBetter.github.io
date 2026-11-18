@@ -468,7 +468,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
         </div>
         <div class="contact-row">
           <span class="eyebrow">CV</span>
-          <span class="val pending">CV link to be added</span>
+          <span class="val"><a href="cv/Adeyemi-Zainab-CV.pdf">Download CV (PDF)</a></span>
           <span></span>
         </div>
         <div class="contact-row">
@@ -547,27 +547,7 @@ const PROJECTS = [
       ["How it was built, and what it cannot tell you", `<p>Five tables in a star schema, modelled in Power BI with DAX measures, and three report pages, one per question. The data is synthetic, generated from a fixed seed, and a Python script reproduces every figure shown on the dashboards so any number here can be checked against the source.</p><p>Integrity checks ran before the analysis and caught one defect: 228 sales dated before their distributor had been onboarded, corrected at source.</p><p>The limits are real. Synthetic data means the patterns come from the generator, so nothing here describes Nigerian trade. It holds revenue only, with no margin or cost to serve, which means the recommendations above cannot yet be ranked by value. And two years of monthly data is too short to separate trend from seasonality with any confidence.</p>`]
     ]
   },
-  {
-    id: "coffee", featured: true,
-    category: "Customer Analytics · Retention · E-commerce",
-    title: "Coffee Retail Customer Analytics",
-    teaser: "Understanding repeat purchasing at an online coffee retailer to find its most valuable customers and test the case for subscriptions.",
-    tools: ["Excel", "Power Query", "Power BI"],
-    data: "Transaction and product data. Anonymised, with synthetic data used in public visuals",
-    status: "Anonymised client work",
-    sections: [
-      ["Business context", `<p>An online retailer selling coffee directly to consumers. Its growth depends on customers coming back, yet it had limited visibility into who returns, how often and what they buy.</p>`],
-      ["Problem statement", `<p>The business needed to understand customer purchasing behaviour, identify its most valuable customer segments and evaluate opportunities for repeat purchases and subscription offerings.</p>`],
-      ["Objectives and key questions", `<ol class="qs"><li>What share of customers buy more than once?</li><li>How long do customers typically wait between purchases?</li><li>Which customer segments are the most valuable?</li><li>Which customers and products are best suited to a subscription offer?</li></ol>`],
-      ["Data and tools", `<ul><li><strong>Transaction records</strong> with customer, order date, product and value.</li><li><strong>Product data</strong> covering product type and price.</li></ul><p style="margin-top:1rem">Power Query to clean and consolidate, Excel for exploratory analysis, and Power BI for segmentation views and dashboards.</p>`],
-      ["Analytical approach", `<ol><li>Cleaned and consolidated transaction and product data.</li><li>Analysed purchase frequency and repeat purchasing behaviour.</li><li>Calculated the time between purchases and customer reorder patterns.</li><li>Segmented customers by purchase frequency and behaviour.</li><li>Examined product preferences and purchasing patterns within each segment.</li></ol>`],
-      ["Key findings", `<ul>${TODO("Add a finding on repeat purchase behaviour, shared at a level that protects the client.")}${TODO("Add a finding on typical reorder intervals.")}${TODO("Add a finding on the most valuable customer segment and its product preferences.")}</ul>`],
-      ["Business implications", `<p>Understanding reorder timing and segment value allows the business to focus retention effort where it is most likely to pay off, rather than treating every customer the same way.</p>`],
-      ["Recommendations", `<ul><li>Use customer segments to target retention and win-back campaigns.</li><li>Prioritise subscription offers for customers with regular reorder patterns.</li><li>Time reminders and offers around typical reorder intervals.</li></ul>`],
-      ["Limitations and next steps", `<p>Results are presented at a high level to protect client confidentiality. Next steps could include cohort retention tracking and customer lifetime value modelling.</p>`]
-    ]
-  },
-  {
+{
     id: "beverage", featured: true,
     category: "Operations Analytics · Production Performance",
     title: "Beverage Manufacturing Performance Analysis",
