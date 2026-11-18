@@ -127,7 +127,7 @@ footer p{margin:0 0 8px; max-width:70ch}
       <span class="k"><i style="background:var(--series-1)"></i>Jan to Apr 2025</span>
       <span class="k"><i style="background:var(--series-2)"></i>Mar to May 2026</span>
     </div>
-    <svg id="c1" class="plot" viewBox="0 0 860 420" role="img" aria-label="Scatter plot of price level change against dispersion change for each fuel in each episode"></svg>
+    <svg id="c1" class="plot" viewBox="0 0 860 440" role="img" aria-label="Scatter plot of price level change against dispersion change for each fuel in each episode"></svg>
     <details><summary>Show the numbers</summary><div class="scroll"><table id="t1"></table></div></details>
   </div>
 </div></section>
@@ -224,8 +224,8 @@ function table(id,cols,rows){
 
 /* ---------- chart 1: level vs dispersion ---------- */
 (function(){
-  const svg=document.getElementById("c1"), W=860,H=420,
-        M={t:18,r:26,b:48,l:62};
+  const svg=document.getElementById("c1"), W=860,H=440,
+        M={t:26,r:74,b:52,l:66};
   const d=DATA.verdict;
   const xs=d.map(p=>p.lvl_chg), ys=d.map(p=>p.disp_chg);
   const x0=Math.min(-6,...xs)-4, x1=Math.max(...xs)+8;
@@ -265,13 +265,37 @@ function table(id,cols,rows){
     svg.appendChild(hit); svg.appendChild(dot);
   });
 
-  // direct-label only the two that carry the story
-  d.filter(p=>(p.window==="episode 1"&&p.product.startsWith("Petrol"))||
-              (p.window==="episode 2"&&p.product.startsWith("Diesel"))).forEach(p=>{
-    const left=p.lvl_chg>40;
-    const tx=el("text",{x:X(p.lvl_chg)+(left?-14:14),y:Y(p.disp_chg)+4,class:"lbl",
-      "text-anchor":left?"end":"start"});
-    tx.textContent=shortP(p.product)+(p.window==="episode 1"?", 2025":", 2026");
+  // label every dot. Candidate positions are tried in order and the first that
+  // clears the dots and the labels already placed wins, so nothing overlaps.
+  const placed=[], dots=d.map(p=>({x:X(p.lvl_chg),y:Y(p.disp_chg),r:11}));
+  const CH=5.75, LH=13;
+  const hits=(b)=>placed.some(q=>!(b.x2<q.x1-3||b.x1>q.x2+3||b.y2<q.y1-2||b.y1>q.y2+2))
+    || dots.some(q=>!(b.x2<q.x-q.r||b.x1>q.x+q.r||b.y2<q.y-q.r||b.y1>q.y+q.r))
+    || b.x1<M.l-44 || b.x2>W-2;
+
+  d.slice().sort((a,b)=>X(a.lvl_chg)-X(b.lvl_chg)).forEach(p=>{
+    const txt=shortP(p.product), w=txt.length*CH;
+    const cx=X(p.lvl_chg), cy=Y(p.disp_chg);
+    const cands=[
+      {a:"start", x:cx+13, y:cy+4},
+      {a:"end",   x:cx-13, y:cy+4},
+      {a:"middle",x:cx,    y:cy-15},
+      {a:"middle",x:cx,    y:cy+21},
+      {a:"start", x:cx+11, y:cy-13},
+      {a:"end",   x:cx-11, y:cy-13},
+      {a:"start", x:cx+11, y:cy+19},
+      {a:"end",   x:cx-11, y:cy+19}
+    ];
+    let put=null;
+    for(const c of cands){
+      const x1 = c.a==="start" ? c.x : c.a==="end" ? c.x-w : c.x-w/2;
+      const box={x1:x1, x2:x1+w, y1:c.y-LH+3, y2:c.y+3};
+      if(!hits(box)){ put=c; placed.push(box); break; }
+    }
+    if(!put){ put=cands[0];
+      const box={x1:cx+13,x2:cx+13+w,y1:cy-LH+7,y2:cy+7}; placed.push(box); }
+    const tx=el("text",{x:put.x,y:put.y,class:"lbl","text-anchor":put.a});
+    tx.textContent=txt;
     svg.appendChild(tx);
   });
 
