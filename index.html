@@ -293,7 +293,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
         <h2>Case studies built around business questions, not just dashboards.</h2>
       </div>
       <div class="featured" id="featured-list"></div>
-      <p class="eyebrow more-head">More projects</p>
+      <p class="eyebrow more-head" id="more-head" hidden>More projects</p>
       <div class="cards" id="more-list"></div>
     </div>
   </section>
@@ -547,54 +547,6 @@ const PROJECTS = [
       ["How it was built, and what it cannot tell you", `<p>Five tables in a star schema, modelled in Power BI with DAX measures, and three report pages, one per question. The data is synthetic, generated from a fixed seed, and a Python script reproduces every figure shown on the dashboards so any number here can be checked against the source.</p><p>Integrity checks ran before the analysis and caught one defect: 228 sales dated before their distributor had been onboarded, corrected at source.</p><p>The limits are real. Synthetic data means the patterns come from the generator, so nothing here describes Nigerian trade. It holds revenue only, with no margin or cost to serve, which means the recommendations above cannot yet be ranked by value. And two years of monthly data is too short to separate trend from seasonality with any confidence.</p>`]
     ]
   },
-{
-    id: "beverage", featured: true,
-    category: "Operations Analytics · Production Performance",
-    title: "Beverage Manufacturing Performance Analysis",
-    teaser: "Building a structured view of production performance and the constraints that limit output at a beverage manufacturer.",
-    tools: ["Excel", "Power BI", "Business analysis"],
-    data: "Production and capacity information. Anonymised business case",
-    status: "Anonymised client work",
-    sections: [
-      ["Business context", `<p>A beverage manufacturer operating production lines with a stated installed capacity. Output was below what management expected, and the reasons were not clearly understood.</p>`],
-      ["Problem statement", `<p>The business needed greater visibility into production performance, available capacity and the operational constraints affecting output.</p>`],
-      ["Objectives and key questions", `<ol class="qs"><li>How has production volume changed over time?</li><li>How large is the gap between installed and available capacity?</li><li>Which constraints, whether equipment, raw materials or working capital, limit output most?</li><li>What information is missing for a complete diagnosis?</li></ol>`],
-      ["Data and tools", `<ul><li><strong>Historical production volumes.</strong></li><li><strong>Installed and available capacity information.</strong></li><li><strong>Operational inputs</strong> on equipment, raw materials and working capital.</li></ul><p style="margin-top:1rem">Excel for analysis, Power BI for performance views, and structured business analysis to frame the diagnosis.</p>`],
-      ["Analytical approach", `<ol><li>Assessed historical production volumes and capacity information.</li><li>Examined differences between installed and available production capacity.</li><li>Investigated potential constraints relating to equipment, raw materials and working capital.</li><li>Developed a framework for assessing capacity utilisation and production performance.</li><li>Identified information gaps and the additional metrics required for a more complete diagnosis.</li></ol>`],
-      ["Key findings", `<ul>${TODO("Add a high-level finding on the gap between installed and available capacity.")}${TODO("Add a finding on which constraint appeared most significant.")}${TODO("Add a finding on the key information gaps identified.")}</ul>`],
-      ["Business implications", `<p>Without separating capacity loss into its causes, investment can go to the wrong place. A structured view helps management decide whether to fix equipment, secure raw materials or address working capital first.</p>`],
-      ["Recommendations", `<ul><li>Adopt the capacity utilisation framework as a regular performance review tool.</li><li>Start capturing the missing metrics, such as downtime and material shortages, consistently.</li><li>Prioritise deeper investigation of the largest constraint before committing to new investment.</li></ul>`],
-      ["Limitations and next steps", `<p>This is presented as an anonymised business case, so client data and confidential findings are not published. The diagnosis was limited by gaps in available data, which the recommendations aim to close.</p>`]
-    ]
-  },
-  {
-    id: "automation", featured: false,
-    category: "Automation · Data Pipeline · Reporting",
-    title: "Automated E-Transaction Reporting",
-    teaser: "Replacing a manual weekly export with a refreshable pipeline from database to cleaned data to dashboard.",
-    tools: ["MySQL", "Power Query", "Excel", "Power BI"],
-    data: "Synthetic transaction data covering transfers, POS and card payments",
-    status: "Planned",
-    sections: [
-      ["Overview", `<p>Many businesses record electronic transactions such as bank transfers, POS and card payments in a database, then spend hours each week exporting, cleaning and summarising them by hand. This project replaces that routine with a pipeline that refreshes on demand or on a schedule.</p>`],
-      ["How it works", `<div class="pipeline"><div><b>Source</b><span>Transaction database</span></div><div><b>Extract</b><span>SQL view of new transactions</span></div><div><b>Clean</b><span>Power Query rules for types, channels and duplicates</span></div><div><b>Model</b><span>Excel or Power BI data model with date and channel tables</span></div><div><b>Report</b><span>Dashboard that updates on refresh</span></div></div>`],
-      ["Key features", `<ul><li>A SQL view that pulls transactions straight from the database.</li><li>Power Query steps that standardise, categorise and de-duplicate records on every refresh.</li><li>A data model with date and channel tables.</li><li>A dashboard showing transaction volume and value, channel mix, failed transactions and daily trends.</li><li>One-click or scheduled refresh, so no manual copying or cleaning.</li></ul>`],
-      ["Business value", `<p>Reporting time drops from hours to minutes, manual errors are removed, and finance gets a consistent daily view of transactions.</p>`]
-    ]
-  },
-  {
-    id: "excel", featured: false,
-    category: "Sales Analytics · Business Reporting",
-    title: "Excel Sales and Order Performance Dashboard",
-    teaser: "An Excel reporting solution for sales trends, order performance, product contribution and KPIs.",
-    tools: ["Excel", "Power Query", "Pivot Tables"],
-    data: "Sales and order data",
-    status: "",
-    sections: [
-      ["Overview", `<p>An Excel-based reporting solution designed to analyse sales trends, order performance, product contribution and business performance indicators.</p>`],
-      ["Key features", `<ul><li>Data cleaning and transformation in Power Query.</li><li>Interactive sales reporting with slicers.</li><li>Product and period comparisons.</li><li>KPI summaries.</li><li>Dashboard visualisation.</li></ul>`]
-    ]
-  }
 ];
 
 const chips = (arr) => `<div class="chips">${arr.map(t => `<span class="chip">${t}</span>`).join("")}</div>`;
@@ -612,7 +564,9 @@ function renderLists(){
       </div>
       <div class="side">${chips(p.tools)}${p.status ? `<span class="status">${p.status}</span>` : ""}</div>
     </a>`).join("");
-  document.getElementById("more-list").innerHTML = PROJECTS.filter(p => !p.featured).map(p => `
+  const more = PROJECTS.filter(p => !p.featured);
+  document.getElementById("more-head").hidden = more.length === 0;
+  document.getElementById("more-list").innerHTML = more.map(p => `
     <a class="card" href="#${p.id}">
       <div class="top"><span class="eyebrow">${p.category.split(" · ")[0]}</span>${p.status ? `<span class="status">${p.status}</span>` : ""}</div>
       <h3>${p.title}</h3>
