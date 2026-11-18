@@ -503,7 +503,10 @@ const PROJECTS = [
     data: "National Bureau of Statistics of Nigeria, 102 published files",
     status: "Live",
     repo: "https://github.com/DataForBetter/Nigeria-Fuel-Prices-SQL",
+    demo: "dashboard/",
     sections: [
+      ["Explore it yourself", `<p>Every finding below is in an <a href="dashboard/"><strong>interactive dashboard</strong></a>, built from the same queries. Drag through the months and watch the country come apart and back together.</p>`],
+
       ["The question", `<p>Nigeria removed its petrol subsidy in 2023. The argument for removing it was that competition would even prices out across the country. The National Bureau of Statistics publishes the prices every month, so the claim is checkable.</p><p>I wanted to answer one thing. Does Nigeria have one fuel market, or thirty-seven?</p>`],
 
       ["102 spreadsheets, none of them data", `<p>NBS publishes these as formatted reports rather than as data, and most of the work was getting them into a state where a question could be asked. Header rows move between the first and third row depending on the file. Two different products share one sheet in the kerosene and gas releases. Consecutive files overlap by two months. The petrol series leaves out the zone labels every other series carries, and files Taraba in the wrong zone in all nineteen months.</p><p>I wrote a parser that reads all 102 files into one table, and recorded every defect rather than quietly correcting it. The check that matters is whether the result still matches what NBS actually published. It does, to the kobo, in both months I tested: <strong>\u20a61,061.35</strong> for November 2025 and <strong>\u20a61,288.54</strong> for March 2026.</p><p>That same check caught an error in press coverage of one of those releases, which reported several northern states above \u20a61,200. The highest state in the release is Borno, at \u20a61,133.86.</p>`],
